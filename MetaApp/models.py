@@ -8,7 +8,7 @@ CRIME_CATEGORIES = [
 ]
 # Create your models here.
 class ReportModel(models.Model):
-    date = models.DateField()
+    date = models.CharField(max_length=100)
     time = models.TimeField()
     crimecategory = models.CharField("Crime Category", max_length=100, choices=CRIME_CATEGORIES)
     platform = models.CharField(max_length=100, default="N/A")
