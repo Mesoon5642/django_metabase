@@ -1,11 +1,15 @@
 from django.db import models
 from django import forms
 
+CRIME_CATEGORIES = [
+    ("AS", "Assault"),
+    ("SV", "Sexual Violence")
+]
 # Create your models here.
 class ReportModel(models.Model):
     date = models.CharField(max_length=300)
     time = models.CharField(max_length=300)
-    crimecategory = models.CharField(max_length=100, default="N/A")
+    crimecategory = models.CharField(max_length=100, choices=CRIME_CATEGORIES)
     platform = models.CharField(max_length=100, default="N/A")
     description = models.CharField(max_length=2000, default="N/A")
     medialinks = models.CharField(max_length=2000, default="N/A") # Figure out a way to do this to add each link individually
