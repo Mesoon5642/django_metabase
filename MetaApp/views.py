@@ -13,7 +13,7 @@ def submit_report(request):
     reportform.fields["techinvolved"]
     if reportform.is_valid():
         print("hello")
-        reportmodel = ReportModel.objects.create(name="bruh")
+        reportmodel = ReportModel.objects.create()
         reportmodel.eventname = reportform.cleaned_data.get("eventname")
         reportmodel.date = reportform.cleaned_data.get("date")
         reportmodel.target = reportform.cleaned_data.get("target")

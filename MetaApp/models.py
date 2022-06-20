@@ -20,7 +20,7 @@ class InvolvedTech(models.Model):
         return self.description
 class ReportModel(models.Model):
     eventname = models.CharField(max_length=100)
-    date = models.CharField(max_length=100)
+    date = models.CharField(max_length=100) # MAKE THIS INTO A DATE FIELD
     target = models.CharField(max_length=100, choices=TARGETS)
     techinvolved = models.ManyToManyField(InvolvedTech)
     description = models.CharField(max_length=2000, default="N/A")
@@ -28,3 +28,7 @@ class ReportModel(models.Model):
     targetother = models.CharField(max_length=200, default="N/A") # Figure out how to only create this if other is selected
     def __str__(self):
         return self.eventname
+    techinvolved.verbose_name = "Tech Involved"
+    eventname.verbose_name = "Event Name"
+    mainlink.verbose_name = "Main Link"
+    targetother.verbose_name = "Target Other"
