@@ -2,20 +2,11 @@ html, body{
     margin: 0;
     height: 100%;
 }
-body{
-    font-family: sans-serif;
-}
 ul{
     list-style: none;
     padding-left: 0;
 }
-select{
-    font-family: sans-serif;
-}
-button{
-    font-family: sans-serif;
-}
-#id_date{
+select, button, #id_date, body{
     font-family: sans-serif;
 }
 #id_medialinks{
@@ -32,5 +23,40 @@ button{
     border: 4px solid rgb(128, 128, 255);
     border-radius: 12px;
     display: inline-block;
-    padding: 1rem;
+    padding: 1rem 5rem;
+}
+#main_form label{
+    display: block;
+}
+#central_content input, select{
+    margin-bottom: 1rem;
+}
+#central_content label, #id_techinvolved label{
+    margin-bottom: 0.25rem;
+}
+#main_form button{
+    margin: 0.5rem 0;
+}
+#id_techinvolved li{
+    margin: 0.25rem 0;
+}
+#id_techinvolved{
+    background-color: white;
+    padding: 0.25rem;
+    border-radius: 2px;
+    border: 1px solid gray;
+    width: 206px;
+}
+#main_form h1{
+    color: rgb(128, 128, 255);
+    text-shadow: 1px 1px white;
+    margin: auto auto;
+}
+#main_form button{
+    background-color: white;
+    border: 3px solid rgb(128, 128, 255);
+    border-radius: 8px;
+    color: rgb(128, 128, 255);
+    padding: 5px 10px;
+    margin: 16px 30.75% 8px 30.75%;
 }

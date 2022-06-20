@@ -13,12 +13,14 @@
                 <form method="POST">
                     {% csrf_token %}
                     <ul>
-                        <li id="eventname">{{report_form.eventname}} </li>
-                        <li id="description">{{report_form.description}}</li>
-                        <li id="target">{{report_form.target}}</li>
-                        <li id="date">{{report_form.date}}</li>
-                        <li id="mainlink">{{report_form.mainlink}}</li>
-                        <li id="techinvolved">{{report_form.techinvolved}}</li>
+                        <div id="central_content">
+                            <li id="eventname">{{report_form.eventname.label_tag}}{{report_form.eventname}} </li>
+                            <li id="description">{{report_form.description.label_tag}}{{report_form.description}}</li>
+                            <li id="target">{{report_form.target.label_tag}}{{report_form.target}}</li>
+                            <li id="date">{{report_form.date.label_tag}}{{report_form.date}}</li>
+                            <li id="mainlink">{{report_form.mainlink.label_tag}}{{report_form.mainlink}}</li>
+                        </div>
+                        <li id="techinvolved">{{report_form.techinvolved.label_tag}}{{report_form.techinvolved}}</li>
                     <button type="submit">Submit</button>
                 </form>
             </div>

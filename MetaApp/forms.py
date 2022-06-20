@@ -5,11 +5,8 @@ class ReportForm(ModelForm):
     class Meta:
         model = ReportModel
         fields = ("eventname", "date", "target", "techinvolved", "description", "mainlink")
-        labels = {
-            "date": ("What"),
-        }
         widgets = {
             "date": DateInput(attrs={'type': 'date'}),
-            "time": TimeInput(attrs={"type":"time"}),
+            "time": TimeInput(attrs={"type": "time"}),
             "techinvolved": CheckboxSelectMultiple()
         }

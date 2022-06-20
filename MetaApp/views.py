@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 
 from .forms import ReportForm
-from .models import TECH_INVOLVED, ReportModel
+from .models import ReportModel
 
 # Create your views here.
 

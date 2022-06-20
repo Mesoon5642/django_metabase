@@ -1,12 +1,6 @@
 from django.utils import timezone
 from django.db import models
 from django import forms
-TECH_INVOLVED = [
-    ("VR", "Virtual Reality"),
-    ("MLT", "Multiplayer Online Videogame"),
-    ("CR", "Chatroom/Forum"),
-    ("CC", "Cryptocurrency")
-]
 TARGETS = [
     ("I", "Individual"),
     ("S", "School"),
