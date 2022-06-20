@@ -9,10 +9,7 @@ from .models import ReportModel
 
 def submit_report(request):
     reportform = ReportForm(request.POST)
-    print(reportform.data)
-    reportform.fields["techinvolved"]
     if reportform.is_valid():
-        print("hello")
         reportmodel = ReportModel.objects.create()
         reportmodel.eventname = reportform.cleaned_data.get("eventname")
         reportmodel.date = reportform.cleaned_data.get("date")
@@ -22,8 +19,6 @@ def submit_report(request):
         reportmodel.mainlink = reportform.cleaned_data.get("mainlink")
         reportmodel.save()
         return HttpResponseRedirect(reverse("thanks"))
-    else:
-        print(reportform.errors)
     return render(request, "submit_report.html", {"report_form":reportform})
 def thanks(request):
     return render (request, "thanks.html")

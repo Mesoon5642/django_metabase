@@ -10,7 +10,7 @@ select, button, #id_date, body{
     font-family: sans-serif;
 }
 #id_medialinks{
-    resize:none;
+    resize: none;
 }
 #main_content{
     display: flex;
