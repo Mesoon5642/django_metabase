@@ -1,17 +1,30 @@
 from django.utils import timezone
 from django.db import models
 from django import forms
-
-CRIME_CATEGORIES = [
-    ("AS", "Assault"),
-    ("SV", "Sexual Violence")
+TECH_INVOLVED = [
+    ("VR", "Virtual Reality"),
+    ("MLT", "Multiplayer Online Videogame"),
+    ("CR", "Chatroom/Forum"),
+    ("CC", "Cryptocurrency")
+]
+TARGETS = [
+    ("I", "Individual"),
+    ("S", "School"),
+    ("PB", "Public Building"),
+    ("O", "Other")
 ]
 # Create your models here.
+class InvolvedTech(models.Model):
+    description = models.CharField(max_length=200)
+    def __str__(self):
+        return self.description
 class ReportModel(models.Model):
+    eventname = models.CharField(max_length=100)
     date = models.CharField(max_length=100)
-    time = models.TimeField()
-    crimecategory = models.CharField("Crime Category", max_length=100, choices=CRIME_CATEGORIES)
-    platform = models.CharField(max_length=100, default="N/A")
+    target = models.CharField(max_length=100, choices=TARGETS)
+    techinvolved = models.ManyToManyField(InvolvedTech)
     description = models.CharField(max_length=2000, default="N/A")
-    medialinks = models.CharField(max_length=2000, default="N/A") # Figure out a way to do this to add each link individually
-    govreport = models.CharField(max_length=300, default="N/A")
+    mainlink = models.CharField(max_length=2000, default="N/A")
+    targetother = models.CharField(max_length=200, default="N/A") # Figure out how to only create this if other is selected
+    def __str__(self):
+        return self.eventname

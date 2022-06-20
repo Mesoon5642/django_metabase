@@ -1,14 +1,27 @@
 <!doctype html>
-{% load crispy_forms_tags %}
+{% load static %}
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="{% static "MetaApp/submitform.css" %}">
         <title>Submit Report</title>
+        <script src="{% static "MetaApp/screwmarkers.js"%}"></script>
     </head>
     <body>
-        <h1>Submit Form</h1>
-        <form method="POST">
-            {% csrf_token %}
-            {{report_form|crispy}}
-            <button type="submit">Submit</button>
+        <div id="main_content">
+            <div id="main_form">
+                <h1>Submit Form</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    <ul>
+                        <li id="eventname">{{report_form.eventname}} </li>
+                        <li id="description">{{report_form.description}}</li>
+                        <li id="target">{{report_form.target}}</li>
+                        <li id="date">{{report_form.date}}</li>
+                        <li id="mainlink">{{report_form.mainlink}}</li>
+                        <li id="techinvolved">{{report_form.techinvolved}}</li>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
     </body>
 </html>
