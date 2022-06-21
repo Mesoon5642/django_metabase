@@ -4,7 +4,6 @@
     <head>
         <link rel="stylesheet" type="text/css" href="{% static "MetaApp/submitform.css" %}">
         <script src="{% static "MetaApp/screwmarkers.js"%}"></script>
-        <title>Submit Report</title>
     </head>
     <body>
         <div id="main_content">
@@ -21,7 +20,7 @@
                             <li id="mainlink">{{report_form.mainlink.label_tag}}{{report_form.mainlink}}</li>
                         </div>
                         <li id="techinvolved">{{report_form.techinvolved.label_tag}}{{report_form.techinvolved}}</li>
-                    <button type="submit">Submit</button>
+                    <button type="submit" id="submit">Submit</button>
                 </form>
             </div>
         </div>

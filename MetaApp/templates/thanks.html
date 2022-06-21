@@ -1,9 +1,12 @@
 <!doctype html>
+{% load static %}
 <html>
     <head>
+        <script src="{% static "MetaApp/submit.js"%}" defer></script>
         <title>Thanks!</title>
     </head>
     <body>
+        <div id="data_div" data-json={{jsondata}}></div>
         <h1>Zamn, this actually worked!</h1>
     </body>
 </html>

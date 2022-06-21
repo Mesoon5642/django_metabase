@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <link rel="stylesheet" type="text/css" href="{% static "MetaApp/index.css" %}">
+        <script src="{% static "MetaApp/graphs.js" %}" defer></script>
+        <title>MetaData Home</title>
+    </head>
+    <body>
+        <header>
+            <h1>MetaData Metaverse Crime Database</h1>
+        </header>
+        <div id="main_content">
+            <a href="MetaApp/submit_report">Submit Report</a>
+        </div>
+        <div id="graph">
+            <canvas id="big_graph"></canvas>
+        </div>
+    </body>
+</html>
