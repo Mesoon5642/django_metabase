@@ -4,7 +4,7 @@ from .models import ReportModel
 class ReportForm(ModelForm):
     class Meta:
         model = ReportModel
-        fields = ("eventname", "date", "target", "techinvolved", "description", "mainlink")
+        fields = ("eventname", "date", "target", "techinvolved", "description", "mainlink", "targetother")
         widgets = {
             "date": DateInput(attrs={'type': 'date'}),
             "time": TimeInput(attrs={"type": "time"}),

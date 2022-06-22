@@ -20,7 +20,12 @@ class ReportModel(models.Model):
     targetother = models.CharField(max_length=200, default="N/A") # Figure out how to only create this if other is selected
     def __str__(self):
         return self.eventname
+    def techcount():
+        techlist = []
+        for thing in InvolvedTech.objects.all():
+            techlist.append(ReportModel.objects.filter(techinvolved=thing).count())
+        return techlist
     techinvolved.verbose_name = "Tech Involved"
     eventname.verbose_name = "Event Name"
     mainlink.verbose_name = "Main Link"
-    targetother.verbose_name = "Target Other"
+    targetother.verbose_name = "Other Target"

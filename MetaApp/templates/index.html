@@ -3,20 +3,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
         <link rel="stylesheet" type="text/css" href="{% static "MetaApp/index.css" %}">
+        <script src="{% static "MetaApp/graphdata.js" %}" defer></script>
         <script src="{% static "MetaApp/graphs.js" %}" defer></script>
         <title>MetaData Home</title>
     </head>
     <body>
+        <h1 id="data_h1" style="display:none">{{tech_data}}</h1>
         <header>
             <h1>MetaData Metaverse Crime Database</h1>
         </header>
         <div id="main_content">
-            <a href="MetaApp/submit_report">Submit Report</a>
+            <a href="/submit_report">Submit Report</a>
         </div>
         <div id="graph">
-            <canvas id="big_graph"></canvas>
+            <div id="big_graph"></div>
+            <div id="big_graph_2"></div>
         </div>
     </body>
 </html>

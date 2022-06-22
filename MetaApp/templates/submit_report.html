@@ -3,7 +3,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="{% static "MetaApp/submitform.css" %}">
-        <script src="{% static "MetaApp/screwmarkers.js"%}"></script>
+        <script src="{% static "MetaApp/submitform.js"%}" defer></script>
     </head>
     <body>
         <div id="main_content">
@@ -16,6 +16,7 @@
                             <li id="eventname">{{report_form.eventname.label_tag}}{{report_form.eventname}} </li>
                             <li id="description">{{report_form.description.label_tag}}{{report_form.description}}</li>
                             <li id="target">{{report_form.target.label_tag}}{{report_form.target}}</li>
+                            <li id="target_other">{{report_form.targetother.label_tag}}{{report_form.targetother}}</li>
                             <li id="date">{{report_form.date.label_tag}}{{report_form.date}}</li>
                             <li id="mainlink">{{report_form.mainlink.label_tag}}{{report_form.mainlink}}</li>
                         </div>
