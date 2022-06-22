@@ -12,12 +12,13 @@ class InvolvedTech(models.Model):
         return self.description
 class ReportModel(models.Model):
     eventname = models.CharField(max_length=100)
-    date = models.CharField(max_length=100) # MAKE THIS INTO A DATE FIELD
+    date = models.CharField(max_length=100)
     target = models.CharField(max_length=100, choices=TARGETS)
     techinvolved = models.ManyToManyField(InvolvedTech)
     description = models.CharField(max_length=2000, default="N/A")
     mainlink = models.CharField(max_length=2000, default="N/A")
-    targetother = models.CharField(max_length=200, default="N/A") # Figure out how to only create this if other is selected
+    targetother = models.CharField(max_length=200, default="N/A")
+    cryptoamount = models.DecimalField(default=0, decimal_places=2, max_digits=100)
     def __str__(self):
         return self.eventname
     def techcount():
@@ -29,3 +30,4 @@ class ReportModel(models.Model):
     eventname.verbose_name = "Event Name"
     mainlink.verbose_name = "Main Link"
     targetother.verbose_name = "Other Target"
+    cryptoamount.verbose_name = "Crypto Amount"

@@ -31,7 +31,7 @@ select, button, #id_date, body{
 #central_content input, select{
     margin-bottom: 1rem;
 }
-#central_content label, #id_techinvolved label{
+#central_content label, #techinvolved label, #cryptoamount label{
     margin-bottom: 0.25rem;
 }
 #main_form button{
@@ -46,6 +46,7 @@ select, button, #id_date, body{
     border-radius: 2px;
     border: 1px solid gray;
     width: 206px;
+    margin-bottom: 1rem;
 }
 #main_form h1{
     color: rgb(128, 128, 255);

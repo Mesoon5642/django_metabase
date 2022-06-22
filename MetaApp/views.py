@@ -16,6 +16,7 @@ def submit_report(request):
         reportmodel.eventname = reportform.cleaned_data.get("eventname")
         reportmodel.date = reportform.cleaned_data.get("date")
         reportmodel.target = reportform.cleaned_data.get("target")
+        reportmodel.targetother = reportform.cleaned_data.get("targetother")
         reportmodel.techinvolved.set(reportform.cleaned_data.get("techinvolved"))
         reportmodel.description = reportform.cleaned_data.get("description")
         reportmodel.mainlink = reportform.cleaned_data.get("mainlink")
