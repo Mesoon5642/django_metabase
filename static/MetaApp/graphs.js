@@ -1,4 +1,5 @@
-var dataarr = eval(graphdata)
+var techarr = eval(graphdata)
+var targetarr = eval(targetdata)
 main()
 function main(){
     google.load('visualization', "1", {packages:['corechart']});
@@ -7,15 +8,30 @@ function main(){
 function drawChart(){
     var data = google.visualization.arrayToDataTable([
         ["Tech Involved", "Number of Incidents"],
-        ["Virtual Reality", dataarr[0]],
-        ["Cryptocurrency", dataarr[1]],
-        ["Online Games", dataarr[2]]
+        ["Virtual Reality", techarr[0]],
+        ["Cryptocurrency", techarr[1]],
+        ["Online Games", techarr[2]]
     ]);
     var options = {
         title: 'Tech Involved in Metaverse Crimes',
-        width: 400,
-        height: 300
+        width: 500,
+        height: 300,
+        backgroundColor: "#DCDCDC"
     };
+    var data1 = google.visualization.arrayToDataTable([
+        ["Targets", "Number of Incidents"],
+        ["Individual", targetarr[0]],
+        ["School", targetarr[1]],
+        ["Public Building", targetarr[2]],
+        ["Other", targetarr[3]]
+    ]);
+    var options = {
+        title: "Common Metaverse Crime Targets",
+        width: 500,
+        height: 300,
+        backgroundColor: "#DCDCDC"
+    }
     var chart = new google.visualization.PieChart(document.getElementById('big_graph'));
+    var chart1 = new google.visualization.PieChart(document.getElementById("big_graph_1"))
     chart.draw(data, options);
 }

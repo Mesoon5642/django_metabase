@@ -26,4 +26,4 @@ def submit_report(request):
 def thanks(request):
     return render (request, "thanks.html")
 def index(request):
-    return render (request, "index.html", {"tech_data":ReportModel.techcount()})
+    return render (request, "index.html", {"tech_data":ReportModel.techcount(), "target_data":ReportModel.targetcount()})

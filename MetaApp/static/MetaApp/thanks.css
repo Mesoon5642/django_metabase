@@ -1,0 +1,34 @@
+body, html{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+body{
+    background-color: gainsboro;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+#main_content{
+    text-align: center;
+    background-color: white;
+    border: 4px solid rgb(128, 128, 255);
+    padding: 20px 40px;
+}
+#main_content h1{
+    color: rgb(128, 128, 255);
+    text-shadow: 1px 1px white;
+    margin: auto auto;
+    margin: 2rem;
+}
+#main_content a{
+    background-color: white;
+    border: 3px solid rgb(128, 128, 255);
+    border-radius: 8px;
+    color: rgb(128, 128, 255);
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-bottom: 2rem;
+    display: inline-block;
+}

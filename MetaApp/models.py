@@ -26,6 +26,11 @@ class ReportModel(models.Model):
         for thing in InvolvedTech.objects.all():
             techlist.append(ReportModel.objects.filter(techinvolved=thing).count())
         return techlist
+    def targetcount():
+        targetlist = []
+        for thing in TARGETS:
+            targetlist.append(ReportModel.objects.filter(target=thing[0]).count())
+        return targetlist
     techinvolved.verbose_name = "Tech Involved"
     eventname.verbose_name = "Event Name"
     mainlink.verbose_name = "Main Link"

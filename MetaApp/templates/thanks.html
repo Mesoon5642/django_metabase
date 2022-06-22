@@ -2,9 +2,13 @@
 {% load static %}
 <html>
     <head>
+        <link rel="stylesheet" href="{% static "MetaApp/thanks.css" %}"/>
         <title>Thanks!</title>
     </head>
     <body>
-        <h1>Zamn, this actually worked!</h1>
+        <div id="main_content">
+            <h1>Thank you for submitting a report</h1>
+            <a href="/MetaApp/">Return to home page</a>
+        </div>
     </body>
 </html>

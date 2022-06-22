@@ -1,7 +1,3 @@
-annoyingmarkers = document.querySelectorAll("marker");
-for (m in annoyingmarkers){
-    m.remove();
-}
 console.log("bruh")
 target = document.getElementById("id_target");
 hiddenother = document.getElementById("target_other");
@@ -13,4 +9,8 @@ function checkOther(){
     } else {
         hiddenother.style.display = "none";
     }
+}
+annoyingmarkers = document.querySelectorAll("marker");
+for (m in annoyingmarkers){
+    m.remove();
 }
