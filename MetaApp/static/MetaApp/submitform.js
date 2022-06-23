@@ -1,16 +1,20 @@
-console.log("bruh")
 target = document.getElementById("id_target");
 hiddenother = document.getElementById("target_other");
+crypt = document.getElementById("id_techinvolved_1");
+cryptoamount = document.getElementById("cryptoamount");
 target.onchange = checkOther;
 function checkOther(){
-    console.log("bruh")
     if (target.selectedIndex == 4){
         hiddenother.style.display = "block";
     } else {
         hiddenother.style.display = "none";
     }
 }
-annoyingmarkers = document.querySelectorAll("marker");
-for (m in annoyingmarkers){
-    m.remove();
+function checkCrypto(){
+    if (crypt.checked){
+        cryptoamount.style.display = "block";
+    } else {
+        cryptoamount.style.display = "none"
+    }
 }
+crypt.addEventListener("click", checkCrypto);

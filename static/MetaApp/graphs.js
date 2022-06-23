@@ -25,13 +25,14 @@ function drawChart(){
         ["Public Building", targetarr[2]],
         ["Other", targetarr[3]]
     ]);
-    var options = {
+    var options1 = {
         title: "Common Metaverse Crime Targets",
         width: 500,
         height: 300,
         backgroundColor: "#DCDCDC"
     }
     var chart = new google.visualization.PieChart(document.getElementById('big_graph'));
-    var chart1 = new google.visualization.PieChart(document.getElementById("big_graph_1"))
+    var chart1 = new google.visualization.PieChart(document.getElementById("big_graph_1"));
     chart.draw(data, options);
+    chart1.draw(data1, options1);
 }

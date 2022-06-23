@@ -3,7 +3,7 @@ from django.forms import CheckboxSelectMultiple, DateInput, ModelForm, TimeInput
 from .models import ReportModel
 
 class ReportForm(ModelForm):
-    targetother = forms.CharField(required=False)
+    targetother = forms.CharField(required=False, label="Other Target")
     cyrptoamount = forms.DecimalField(decimal_places=2, max_digits=100, required=False)
     class Meta:
         model = ReportModel
