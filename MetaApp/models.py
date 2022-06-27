@@ -1,3 +1,4 @@
+from pyexpat import model
 from django.db import models
 TARGETS = [
     ("I", "Individual"),
@@ -36,3 +37,9 @@ class ReportModel(models.Model):
     mainlink.verbose_name = "Main Link"
     targetother.verbose_name = "Other Target"
     cryptoamount.verbose_name = "Crypto Amount"
+class AdminUserModel(models.Model): #Verify input
+    username = models.CharField(max_length=300)
+    password = models.CharField(max_length=100)
+    verified = models.BooleanField()
+    def __str__(self):
+        return self.username

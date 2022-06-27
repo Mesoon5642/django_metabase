@@ -4,8 +4,8 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 import json
 from httplib2 import Http
-from .forms import ReportForm
-from .models import InvolvedTech, ReportModel
+from .forms import ReportForm, LoginForm
+from .models import ReportModel
 
 # Create your views here.
 
@@ -29,3 +29,6 @@ def index(request):
     return render (request, "index.html")
 def viewdata(request):
     return render(request, "viewdata.html", {"tech_data":ReportModel.techcount(), "target_data":ReportModel.targetcount()})
+def login(request):
+    loginform = LoginForm(request.POST)
+    return render(request, "login.html", {"login_form":loginform})

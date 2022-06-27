@@ -1,8 +1,9 @@
 import csv
+from pyexpat import model
 from django.contrib import admin
 from django.http import HttpResponse
 
-from .models import ReportModel, InvolvedTech
+from .models import ReportModel, InvolvedTech, AdminUserModel
 
 # Register your models here.
 
@@ -33,6 +34,14 @@ class ReportModelAdmin(admin.ModelAdmin):
     
     actions = ["export_as_csv"]
     export_as_csv.short_description = "Export Selected"
-
+class AdminUserModelAdmin(admin.ModelAdmin):
+    def verify(self, request, queryset):
+        for obj in queryset:
+            obj.verified = True
+            obj.save()
+    list_display = ("username", "verified")
+    ordering = ["username"]
+    actions = ["verify"]
 admin.site.register(ReportModel, ReportModelAdmin)
 admin.site.register(InvolvedTech)
+admin.site.register(AdminUserModel, AdminUserModelAdmin)

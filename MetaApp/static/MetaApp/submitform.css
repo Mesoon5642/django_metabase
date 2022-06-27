@@ -19,13 +19,13 @@ select, button, #id_date, body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 75%
 }
 #main_form{
     background-color: white;
     border: 4px solid rgb(128, 128, 255);
     border-radius: 12px;
-    display: inline-block;
+    display: inline;
     padding: 1rem 5rem;
 }
 #main_form label{

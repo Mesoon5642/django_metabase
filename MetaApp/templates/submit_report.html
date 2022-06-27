@@ -1,12 +1,18 @@
 <!doctype html>
+{%extends "index.html"%}
 {% load static %}
 <html>
+    {% block "styles"%}
     <head>
+        <link rel="stylesheet" type="text/css" href="{% static "MetaApp/base.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "MetaApp/submitform.css" %}">
         <script src="{% static "MetaApp/submitform.js"%}" defer></script>
         <script src="{% static "MetaApp/annoyingmarkers.js"%}" defer></script>
     </head>
+    {% endblock %}
     <body>
+        {% block "header"%}{%endblock%}
+        {%block "main"%}
         <div id="main_content">
             <div id="main_form">
                 <h1>Submit Form</h1>
@@ -27,5 +33,6 @@
                 </form>
             </div>
         </div>
+        {%endblock%}
     </body>
 </html>

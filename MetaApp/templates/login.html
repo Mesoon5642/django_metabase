@@ -1,0 +1,22 @@
+{% load static %}
+
+<!doctype html>
+<html>
+    {% block "styles"%}
+        <head>
+            <link rel="stylesheet" type="text/css" href="{% static "MetaApp/login.css" %}">
+            <script src="{% static "MetaApp/annoyingmarkers.js"%}" defer></script>
+            <title>Login</title>
+        </head>
+    {%endblock%}
+    <body>
+        <div id="main_content">
+            <form method="POST">
+                <h1>Login</h1>
+                <ul>
+                    <li id="username">{{login_form.username.label_tag}}{{login_form.username}}</li>
+                    <li id="password">{{login_form.password.label_tag}}{{login_form.username}}</li>
+                </ul>
+            </form>
+        </div>
+    </body>
