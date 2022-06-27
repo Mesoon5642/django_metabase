@@ -28,7 +28,7 @@ class ReportModelAdmin(admin.ModelAdmin):
     ordering = ["date"]
     fieldsets = (
         ("Main", {"fields": ["eventname", "date", "target", "techinvolved", "description", "mainlink"]}),
-        ("Extras", {"fields": ["targetother"]})
+        ("Extras", {"fields": ["targetother", "cryptoamount"]})
     )
     
     actions = ["export_as_csv"]

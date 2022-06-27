@@ -1,0 +1,7 @@
+#graph{
+    display: flex;
+    justify-content: space-around;
+}
+#graph div{
+    margin: 5px;
+}

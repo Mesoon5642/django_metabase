@@ -1,8 +1,7 @@
 target = document.getElementById("id_target");
 hiddenother = document.getElementById("target_other");
-crypto = document.getElementById("document_techinvolved_1");
+crypt = document.getElementById("id_techinvolved_1");
 cryptoamount = document.getElementById("cryptoamount");
-crypto.addEventListener("click", checkCrypto);
 target.onchange = checkOther;
 function checkOther(){
     if (target.selectedIndex == 4){
@@ -12,13 +11,10 @@ function checkOther(){
     }
 }
 function checkCrypto(){
-    if (crypto.checked){
+    if (crypt.checked){
         cryptoamount.style.display = "block";
     } else {
         cryptoamount.style.display = "none"
     }
 }
-annoyingmarkers = document.querySelectorAll("marker");
-for (m in annoyingmarkers){
-    m.remove();
-}
+crypt.addEventListener("click", checkCrypto);

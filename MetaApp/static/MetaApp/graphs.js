@@ -1,3 +1,4 @@
+console.log("bruh2")
 var techarr = eval(graphdata)
 var targetarr = eval(targetdata)
 main()
