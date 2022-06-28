@@ -39,8 +39,8 @@ class AdminUserModelAdmin(admin.ModelAdmin):
         for obj in queryset:
             obj.verified = True
             obj.save()
-    list_display = ("username", "verified")
-    ordering = ["username"]
+    list_display = ("realname", "username", "verified")
+    ordering = ["realname"]
     actions = ["verify"]
 admin.site.register(ReportModel, ReportModelAdmin)
 admin.site.register(InvolvedTech)

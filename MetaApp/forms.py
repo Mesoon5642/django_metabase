@@ -17,6 +17,9 @@ class LoginForm(ModelForm):
     class Meta:
         model = AdminUserModel
         fields = ("username", "password")
-        widgets = {
-            "password": HiddenInput()
-        }
+class CreateAccountForm(ModelForm):
+    confirmpassword = forms.CharField(label="Confirm Password")
+    realname = forms.CharField(label="Full Name")
+    class Meta:
+        model = AdminUserModel
+        fields = ("realname", "username", "password")

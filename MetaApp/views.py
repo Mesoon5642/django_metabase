@@ -2,26 +2,30 @@ from multiprocessing import context
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+from django.template import RequestContext
 import json
 from httplib2 import Http
-from .forms import ReportForm, LoginForm
-from .models import ReportModel
+from .forms import CreateAccountForm, ReportForm, LoginForm
+from .models import AdminUserModel, ReportModel
 
 # Create your views here.
 
 def submit_report(request):
-    reportform = ReportForm(request.POST)
-    if reportform.is_valid():
-        reportmodel = ReportModel.objects.create()
-        reportmodel.eventname = reportform.cleaned_data.get("eventname")
-        reportmodel.date = reportform.cleaned_data.get("date")
-        reportmodel.target = reportform.cleaned_data.get("target")
-        reportmodel.targetother = reportform.cleaned_data.get("targetother")
-        reportmodel.techinvolved.set(reportform.cleaned_data.get("techinvolved"))
-        reportmodel.description = reportform.cleaned_data.get("description")
-        reportmodel.mainlink = reportform.cleaned_data.get("mainlink")
-        reportmodel.save()
-        return render (request, "thanks.html")
+    if (request.COOKIES["LOGGED_USERNAME"] == ""):
+        return HttpResponseRedirect(reverse("MetaApp:login"))
+    else:
+        reportform = ReportForm(request.POST)
+        if reportform.is_valid():
+            reportmodel = ReportModel.objects.create()
+            reportmodel.eventname = reportform.cleaned_data.get("eventname")
+            reportmodel.date = reportform.cleaned_data.get("date")
+            reportmodel.target = reportform.cleaned_data.get("target")
+            reportmodel.targetother = reportform.cleaned_data.get("targetother")
+            reportmodel.techinvolved.set(reportform.cleaned_data.get("techinvolved"))
+            reportmodel.description = reportform.cleaned_data.get("description")
+            reportmodel.mainlink = reportform.cleaned_data.get("mainlink")
+            reportmodel.save()
+            return render (request, "thanks.html")
     return render(request, "submit_report.html", {"report_form":reportform})
 def thanks(request):
     return render (request, "thanks.html")
@@ -31,4 +35,22 @@ def viewdata(request):
     return render(request, "viewdata.html", {"tech_data":ReportModel.techcount(), "target_data":ReportModel.targetcount()})
 def login(request):
     loginform = LoginForm(request.POST)
+    if loginform.is_valid():
+        if (AdminUserModel.objects.filter(username=loginform.cleaned_data.get("username")).count() > 0):
+            response = HttpResponseRedirect(reverse("MetaApp:submit_form"))
+            response.set_cookie("LOGGED_USERNAME", loginform.cleaned_data.get("username"), 43200)
+            return response
     return render(request, "login.html", {"login_form":loginform})
+def create(request):
+    createform = CreateAccountForm(request.POST)
+    print("yes")
+    if createform.is_valid() and (createform.cleaned_data.get("password") == createform.cleaned_data.get("confirmpassword")) and (AdminUserModel.objects.filter(username=createform.cleaned_data.get("username")).count() < 1):
+        usermodel = AdminUserModel.objects.create()
+        usermodel.realname = createform.cleaned_data.get("realname")
+        usermodel.username = createform.cleaned_data.get("username")
+        usermodel.password = createform.cleaned_data.get("password")
+        usermodel.verified = False
+        usermodel.save()
+        return render (request, "thanks.html")
+    print(createform.errors)
+    return render (request, "create_account.html", {"create_form":createform})

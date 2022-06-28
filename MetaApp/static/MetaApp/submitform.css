@@ -56,7 +56,7 @@ select, button, #id_date, body{
     text-shadow: 1px 1px white;
     margin: auto auto;
 }
-#main_form button{
+button{
     background-color: white;
     border: 3px solid rgb(128, 128, 255);
     border-radius: 8px;

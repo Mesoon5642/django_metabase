@@ -38,8 +38,10 @@ class ReportModel(models.Model):
     targetother.verbose_name = "Other Target"
     cryptoamount.verbose_name = "Crypto Amount"
 class AdminUserModel(models.Model): #Verify input
+    realname = models.CharField(max_length=200)
     username = models.CharField(max_length=300)
     password = models.CharField(max_length=100)
-    verified = models.BooleanField()
+    verified = models.BooleanField(default=False)
     def __str__(self):
         return self.username
+    realname.verbose_name = "Real Name"
