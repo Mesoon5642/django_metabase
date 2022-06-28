@@ -1,5 +1,6 @@
+from ast import Pass
 from django import forms
-from django.forms import CheckboxSelectMultiple, DateInput, HiddenInput, ModelForm, TimeInput
+from django.forms import CheckboxSelectMultiple, DateInput, HiddenInput, ModelForm, PasswordInput, TimeInput
 from .models import ReportModel, AdminUserModel
 
 class ReportForm(ModelForm):
@@ -17,9 +18,16 @@ class LoginForm(ModelForm):
     class Meta:
         model = AdminUserModel
         fields = ("username", "password")
+        widgets = {
+            "password": PasswordInput()
+        }
 class CreateAccountForm(ModelForm):
     confirmpassword = forms.CharField(label="Confirm Password")
     realname = forms.CharField(label="Full Name")
     class Meta:
         model = AdminUserModel
-        fields = ("realname", "username", "password")
+        fields = ("realname", "username", "password", "confirmpassword")
+        widgets = {
+            "password": PasswordInput(),
+            "confirmpassword": PasswordInput()
+        }

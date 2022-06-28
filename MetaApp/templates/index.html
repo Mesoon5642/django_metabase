@@ -12,7 +12,11 @@
     <body>
         {% block header %}
         <header>
-            <a id="big_button"href="/MetaApp">Meta Data</a>
+            <script src="{% static "MetaApp/cookies.js"%}" defer></script>
+            <script src="{% static "MetaApp/index.js"%}" defer></script>
+            <a id="login" href="/MetaApp/login">Login</a> {%comment %} Change this to go to profile details page or something {%endcomment%}
+            <a id="logout" style="display:none; cursor:pointer;">Logout</a>
+            <a id="big_button" href="/MetaApp">Meta Data</a>
             <div id="mini_links">
                 <a id="viewdata" href="/MetaApp/viewdata">Data View</a>
                 <a id="submit_header" href="/MetaApp/submit_report">Submit Report</a>

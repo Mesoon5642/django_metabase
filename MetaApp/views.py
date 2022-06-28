@@ -16,6 +16,7 @@ def submit_report(request):
     else:
         reportform = ReportForm(request.POST)
         if reportform.is_valid():
+            print("yes")
             reportmodel = ReportModel.objects.create()
             reportmodel.eventname = reportform.cleaned_data.get("eventname")
             reportmodel.date = reportform.cleaned_data.get("date")
@@ -24,6 +25,8 @@ def submit_report(request):
             reportmodel.techinvolved.set(reportform.cleaned_data.get("techinvolved"))
             reportmodel.description = reportform.cleaned_data.get("description")
             reportmodel.mainlink = reportform.cleaned_data.get("mainlink")
+            print(request.COOKIES["LOGGED_REALNAME"])
+            reportmodel.realname = request.COOKIES["LOGGED_REALNAME"]
             reportmodel.save()
             return render (request, "thanks.html")
     return render(request, "submit_report.html", {"report_form":reportform})
@@ -36,9 +39,10 @@ def viewdata(request):
 def login(request):
     loginform = LoginForm(request.POST)
     if loginform.is_valid():
-        if (AdminUserModel.objects.filter(username=loginform.cleaned_data.get("username")).count() > 0):
-            response = HttpResponseRedirect(reverse("MetaApp:submit_form"))
-            response.set_cookie("LOGGED_USERNAME", loginform.cleaned_data.get("username"), 43200)
+        if (AdminUserModel.objects.filter(username=loginform.cleaned_data.get("username")).count() > 0) and (AdminUserModel.objects.get(username=loginform.cleaned_data.get("username")).verified):
+            response = HttpResponseRedirect(reverse("MetaApp:submit_report"))
+            response.set_cookie("LOGGED_USERNAME", loginform.cleaned_data.get("username"), 86400)
+            response.set_cookie("LOGGED_REALNAME", AdminUserModel.objects.get(username=loginform.cleaned_data.get("username")).realname, 86400)
             return response
     return render(request, "login.html", {"login_form":loginform})
 def create(request):

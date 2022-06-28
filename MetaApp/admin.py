@@ -25,10 +25,10 @@ class ReportModelAdmin(admin.ModelAdmin):
 
         return response
     list_filter = ["target", "techinvolved"]
-    list_display = ("eventname", "date", "mainlink")
+    list_display = ("eventname", "date", "author")
     ordering = ["date"]
     fieldsets = (
-        ("Main", {"fields": ["eventname", "date", "target", "techinvolved", "description", "mainlink"]}),
+        ("Main", {"fields": ["eventname", "date", "target", "techinvolved", "description", "mainlink", "author"]}),
         ("Extras", {"fields": ["targetother", "cryptoamount"]})
     )
     
