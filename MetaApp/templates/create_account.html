@@ -7,7 +7,8 @@
             <link rel="stylesheet" type="text/css" href="{% static "MetaApp/base.css" %}">
             <link rel="stylesheet" type="text/css" href="{% static "MetaApp/login.css" %}">
             <script src="{% static "MetaApp/annoyingmarkers.js"%}" defer></script>
-            <title>Login</title>
+            <script src="{% static "MetaApp/create.js"%}" defer></script>
+            <title>Create Account</title>
         </head>
     {%endblock%}
     <body>
@@ -18,6 +19,7 @@
                 <ul>
                     <li id="realname">{{create_form.realname.label_tag}}{{create_form.realname}}</li>
                     <li id="username">{{create_form.username.label_tag}}{{create_form.username}}</li>
+                    <p id="warning" style="display:none; color:red;">Passwords do not match</p>
                     <li id="password">{{create_form.password.label_tag}}{{create_form.password}}</li>
                     <li id="confirm">{{create_form.confirmpassword.label_tag}}{{create_form.confirmpassword}}</li>
                 </ul>
