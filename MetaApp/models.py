@@ -19,7 +19,7 @@ class ReportModel(models.Model):
     description = models.CharField(max_length=2000, default="N/A")
     mainlink = models.CharField(max_length=2000, default="N/A")
     targetother = models.CharField(max_length=200, default="N/A")
-    author = models.CharField(max_length=200)
+    author = models.CharField(max_length=200, default="Superuser")
     cryptoamount = models.DecimalField(default=0, decimal_places=2, max_digits=100)
     def __str__(self):
         return self.eventname

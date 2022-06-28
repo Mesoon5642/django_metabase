@@ -24,7 +24,7 @@ class ReportModelAdmin(admin.ModelAdmin):
             row = writer.writerow([getattr(obj, field) for field in field_names])
 
         return response
-    list_filter = ["target", "techinvolved"]
+    list_filter = ["target", "techinvolved", "author"]
     list_display = ("eventname", "date", "author")
     ordering = ["date"]
     fieldsets = (

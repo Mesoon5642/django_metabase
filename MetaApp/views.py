@@ -26,9 +26,12 @@ def submit_report(request):
             reportmodel.description = reportform.cleaned_data.get("description")
             reportmodel.mainlink = reportform.cleaned_data.get("mainlink")
             print(request.COOKIES["LOGGED_REALNAME"])
-            reportmodel.realname = request.COOKIES["LOGGED_REALNAME"]
+            reportmodel.author = str(request.COOKIES["LOGGED_REALNAME"])
+            if (reportform.cleaned_data.get("cryptoamount")):
+                reportmodel.cryptoamount = reportform.cleaned_data.get("cryptoamount")
             reportmodel.save()
             return render (request, "thanks.html")
+    print(reportform.errors)
     return render(request, "submit_report.html", {"report_form":reportform})
 def thanks(request):
     return render (request, "thanks.html")
