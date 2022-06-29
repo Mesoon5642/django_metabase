@@ -4,8 +4,8 @@
 <html>
     {%block "styles"%}
     <head>
-        <link rel="stylesheet" type="text/css" href="{% static "MetaApp/base.css" %}">
-        <link rel="stylesheet" type="text/css" href="{% static "MetaApp/index.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "MetaApp/css/base.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "MetaApp/css/index.css" %}">
         <title>MetaData Home</title>
     </head>
     {%endblock%}
@@ -13,8 +13,8 @@
         {% comment %} Fix this below :( {% endcomment %}
         {% block header %}
         <header>
-            <script src="{% static "MetaApp/cookies.js"%}" defer></script>
-            <script src="{% static "MetaApp/index.js"%}" defer></script>
+            <script src="{% static "MetaApp/javascript/cookies.js"%}" defer></script>
+            <script src="{% static "MetaApp/javascript/index.js"%}" defer></script>
             <a id="login" href="/MetaApp/login">Login</a> {%comment %} Change this to go to profile details page or something {%endcomment%}
             <a id="logout" style="display:none; cursor:pointer;">Logout</a>
             <a id="big_button" href="/MetaApp">Meta Data</a>

@@ -1,0 +1,19 @@
+#main_content{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+#main_content a{
+    display: block;
+    background-color: white;
+    padding: 30px 120px;
+    margin: 2rem;
+    border: 3px solid rgb(128, 128, 255);
+    text-decoration: none;
+    color: rgb(128, 128, 255);
+    font-size: 2rem;
+}
+button{
+    margin: 16px 30.75% 8px 30.75%;
+}

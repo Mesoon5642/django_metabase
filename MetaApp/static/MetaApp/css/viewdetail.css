@@ -1,0 +1,24 @@
+#report, #addbar{
+    display: inline-block;
+    background-color: white;
+    border: 4px solid rgb(128, 128, 255);
+    border-radius: 12px;
+    margin: 2rem;
+    color: rgb(128, 128, 255);
+    text-align: center;
+    padding: 2rem;
+    margin: 6rem;
+}
+#eventname{
+    margin-bottom: 2rem;
+}
+#report_content{
+    display: grid;
+    grid: auto-flow / 1fr 2fr;
+    margin: 2rem;
+}
+#modify{
+    list-style: none;
+    margin: 1rem;
+    padding: 0;
+}

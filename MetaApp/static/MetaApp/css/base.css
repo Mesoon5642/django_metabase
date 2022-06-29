@@ -1,0 +1,40 @@
+header{
+    padding: 20px;
+    background-color: rgb(128, 128, 255);
+    margin: 0;
+    top: 0;
+    text-align: center;
+    font-family: sans-serif;
+}
+#big_button{
+    font-size: 3rem;
+}
+#mini_links{
+    display: flex;
+    justify-content: center;
+}
+#mini_links a {
+    margin: auto 5px;
+}
+header a{
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 15px 0;
+    display: block;
+}
+body{
+    margin: 0;
+    background-color: gainsboro;
+    font-family: sans-serif;
+}
+button{
+    background-color: white;
+    border: 3px solid rgb(128, 128, 255);
+    border-radius: 8px;
+    color: rgb(128, 128, 255);
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+}
