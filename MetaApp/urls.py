@@ -9,5 +9,7 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("viewdata/", views.viewdata, name="viewdata"),
     path("login/", views.login, name="login"),
-    path("createaccount", views.create, name="create")
+    path("createaccount/", views.create, name="create"),
+    path("viewreports/", views.viewreports, name="viewreports"),
+    path("viewdetail/<str:reportname>", views.viewdetail, name="viewdetail")
 ]

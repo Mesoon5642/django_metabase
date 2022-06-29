@@ -10,6 +10,7 @@
     </head>
     {%endblock%}
     <body>
+        {% comment %} Fix this below :( {% endcomment %}
         {% block header %}
         <header>
             <script src="{% static "MetaApp/cookies.js"%}" defer></script>
@@ -20,6 +21,7 @@
             <div id="mini_links">
                 <a id="viewdata" href="/MetaApp/viewdata">Data View</a>
                 <a id="submit_header" href="/MetaApp/submit_report">Submit Report</a>
+                <a id="viewcases" href="/MetaApp/viewreports">View Reports</a>
             </div>
         </header>
         {%endblock%}

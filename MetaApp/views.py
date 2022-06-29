@@ -15,8 +15,7 @@ def submit_report(request):
         return HttpResponseRedirect(reverse("MetaApp:login"))
     else:
         reportform = ReportForm(request.POST)
-        if reportform.is_valid():
-            print("yes")
+        if reportform.is_valid() and ReportModel.objects.filter(eventname=reportform.cleaned_data.get("eventname")).count() < 1:
             reportmodel = ReportModel.objects.create()
             reportmodel.eventname = reportform.cleaned_data.get("eventname")
             reportmodel.date = reportform.cleaned_data.get("date")
@@ -25,8 +24,8 @@ def submit_report(request):
             reportmodel.techinvolved.set(reportform.cleaned_data.get("techinvolved"))
             reportmodel.description = reportform.cleaned_data.get("description")
             reportmodel.mainlink = reportform.cleaned_data.get("mainlink")
-            print(request.COOKIES["LOGGED_REALNAME"])
             reportmodel.author = str(request.COOKIES["LOGGED_REALNAME"])
+            reportmodel.readabletech = reportmodel.readtech()
             if (reportform.cleaned_data.get("cryptoamount")):
                 reportmodel.cryptoamount = reportform.cleaned_data.get("cryptoamount")
             reportmodel.save()
@@ -59,5 +58,8 @@ def create(request):
         usermodel.verified = False
         usermodel.save()
         return render (request, "thanks.html")
-    print(createform.errors)
     return render (request, "create_account.html", {"create_form":createform})
+def viewreports(request):
+    return render (request, "viewreports.html", {"reportobjects":ReportModel.objects.all()})
+def viewdetail(request, reportname):
+    return render (request, "viewdetail.html", {"report":ReportModel.objects.get(eventname=reportname)})

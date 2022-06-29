@@ -3,7 +3,7 @@ from pyexpat import model
 from django.contrib import admin
 from django.http import HttpResponse
 
-from .models import ReportModel, InvolvedTech, AdminUserModel
+from .models import EvidenceModel, RelevantLocationModel, ReportModel, InvolvedTech, AdminUserModel, SuspectModel
 
 # Register your models here.
 
@@ -28,8 +28,9 @@ class ReportModelAdmin(admin.ModelAdmin):
     list_display = ("eventname", "date", "author")
     ordering = ["date"]
     fieldsets = (
-        ("Main", {"fields": ["eventname", "date", "target", "techinvolved", "description", "mainlink", "author"]}),
-        ("Extras", {"fields": ["targetother", "cryptoamount"]})
+        ("Main", {"fields": ["eventname", "date", "target", "techinvolved", "description", "mainlink", "closed", "author"]}),
+        ("Extras", {"fields": ["targetother", "cryptoamount"]}),
+        ("Related Data", {"fields": ["relevantlocations", "suspects", "evidence"]})
     )
     
     actions = ["export_as_csv"]
@@ -44,4 +45,7 @@ class AdminUserModelAdmin(admin.ModelAdmin):
     actions = ["verify"]
 admin.site.register(ReportModel, ReportModelAdmin)
 admin.site.register(InvolvedTech)
+admin.site.register(RelevantLocationModel)
+admin.site.register(EvidenceModel)
+admin.site.register(SuspectModel)
 admin.site.register(AdminUserModel, AdminUserModelAdmin)

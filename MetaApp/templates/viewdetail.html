@@ -1,0 +1,39 @@
+{%extends "index.html"%}
+{%load static%}
+
+<html>
+    {%block "styles"%}
+        <link rel="stylesheet" type="text/css" href="{% static "MetaApp/viewdetail.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "MetaApp/base.css" %}">
+        <script src="{% static "MetaApp/viewdetail.js" %}" defer></script>
+    {%endblock%}
+    {%block "main"%}
+        <div id="main">
+            <body>
+                <div id="report_content">
+                    <div id="addbar">
+                        <h1>Modify Report</h1>
+                        <ul id="modify">
+                            <li><a>Add Suspect</a></li>
+                            <li><a>Add Evidence</a></li>
+                            <li><a>Add Relevant Location</a></li>
+                    </div>
+                    <div id="report">
+                        <h1>View Report</h1>
+                        <h1 id="eventname">{{report.eventname}}</h1>
+                        <h2>Date: {{report.date}}</h2>
+                        <h2>Target: {{report.target}}</h2>
+                        {% if report.targetother != ""%}
+                            <h2>Other Target: {{report.targetother}}</h2>
+                        {%endif%}
+                        <h2>Tech Involved: {{report.readabletech}}</h2>
+                        <h2>Description: {{report.description}}</h2>
+                        <h2>Main Link: {{report.mainlink}}</h2>
+                        <h2>Report Author: {{report.author}}</h2>
+                        {% comment %} Restyle this button {% endcomment %}
+                        <h2>Suspects: <span id="showsus">Show</span></h2>
+                    </div>
+                </div>
+            </body>
+        </div>
+    {%endblock%}
