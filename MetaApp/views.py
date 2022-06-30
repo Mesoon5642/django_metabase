@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.template import RequestContext
 import json
 from httplib2 import Http
-from .forms import CreateAccountForm, ReportForm, LoginForm
+from .forms import CreateAccountForm, EvidenceForm, RelevantLocationForm, ReportForm, LoginForm, SuspectForm
 from .models import AdminUserModel, ReportModel
 import random
 
@@ -71,3 +71,21 @@ def viewreports(request):
     return render (request, "viewreports.html", {"reportobjects":ReportModel.objects.all()})
 def viewdetail(request, rid):
     return render (request, "viewdetail.html", {"report":ReportModel.objects.get(reportid=rid)})
+def addevidence(request, rid):
+    if (request.COOKIES["LOGGED_USERNAME"] == ""):
+        return HttpResponseRedirect(reverse("MetaApp:login"))
+    else:
+        evidenceform = EvidenceForm(request.POST)
+    return render (request, "addevidence.html", {"report":ReportModel.objects.get(reportid=rid), "evidence_form":evidenceform})
+def addsuspect(request, rid):
+    if (request.COOKIES["LOGGED_USERNAME"] == ""):
+        return HttpResponseRedirect(reverse("MetaApp:login"))
+    else:
+        suspectform = SuspectForm(request.POST)
+    return render (request, "addsuspect.html", {"report":ReportModel.objects.get(reportid=rid), "suspect_form":suspectform})
+def addlocation(request, rid):
+    if (request.COOKIES["LOGGED_USERNAME"] == ""):
+        return HttpResponseRedirect(reverse("MetaApp:login"))
+    else:
+        locationform = RelevantLocationForm(request.POST)
+    return render (request, "addlocation.html", {"report":ReportModel.objects.get(reportid=rid), "location_form":locationform})

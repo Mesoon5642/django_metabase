@@ -26,6 +26,7 @@ class SuspectModel(models.Model):
     name = models.CharField(max_length=200, default="")
     description = models.CharField(max_length=2000, default="")
     age = models.IntegerField(default=18)
+    locations = models.ManyToManyField(RelevantLocationModel)
     evidence = models.ManyToManyField(EvidenceModel)
     guilty = models.BooleanField(default=False)
     def __str__(self):

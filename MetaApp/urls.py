@@ -11,5 +11,8 @@ urlpatterns = [
     path("login/", views.login, name="login"),
     path("createaccount/", views.create, name="create"),
     path("viewreports/", views.viewreports, name="viewreports"),
-    path("viewdetail/<int:rid>", views.viewdetail, name="viewdetail")
+    path("viewdetail/<int:rid>", views.viewdetail, name="viewdetail"),
+    path("addevidence/<int:rid>", views.addevidence, name="addevidence"),
+    path("addsuspect/<int:rid>", views.addsuspect, name="addsuspect"),
+    path("addlocation/<int:rid>", views.addlocation, name="addlocation")
 ]
