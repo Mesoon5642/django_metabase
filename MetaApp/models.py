@@ -44,6 +44,7 @@ class ReportModel(models.Model):
     suspects = models.ManyToManyField(SuspectModel)
     closed = models.BooleanField(default=False)
     cryptoamount = models.DecimalField(default=0, decimal_places=2, max_digits=100)
+    reportid = models.IntegerField("ID", default=0000000)
     def __str__(self):
         return self.eventname
     def techcount():
@@ -59,8 +60,8 @@ class ReportModel(models.Model):
     def readtech(self):
         techlist = ""
         for thing in self.techinvolved.all():
-            techlist += (thing.__str__() + ",")
-        techlist = techlist[0:(len(techlist) - 1)]
+            techlist += (thing.__str__() + ", ")
+        techlist = techlist[0:(len(techlist) - 2)]
         return techlist
     readabletech = models.CharField(max_length=1000)
     techinvolved.verbose_name = "Tech Involved"

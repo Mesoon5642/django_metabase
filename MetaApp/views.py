@@ -7,6 +7,7 @@ import json
 from httplib2 import Http
 from .forms import CreateAccountForm, ReportForm, LoginForm
 from .models import AdminUserModel, ReportModel
+import random
 
 # Create your views here.
 
@@ -28,6 +29,13 @@ def submit_report(request):
             reportmodel.readabletech = reportmodel.readtech()
             if (reportform.cleaned_data.get("cryptoamount")):
                 reportmodel.cryptoamount = reportform.cleaned_data.get("cryptoamount")
+            print(random.randint(1000000, 9999999))
+            tempid = random.randint(1000000, 9999999)
+            print(tempid)
+            while (ReportModel.objects.filter(reportid=tempid).count() > 0):
+                tempid = random.randint(1000000, 9999999)
+            print(tempid)
+            reportmodel.reportid = tempid
             reportmodel.save()
             return render (request, "thanks.html")
     print(reportform.errors)
@@ -61,5 +69,5 @@ def create(request):
     return render (request, "create_account.html", {"create_form":createform})
 def viewreports(request):
     return render (request, "viewreports.html", {"reportobjects":ReportModel.objects.all()})
-def viewdetail(request, reportname):
-    return render (request, "viewdetail.html", {"report":ReportModel.objects.get(eventname=reportname)})
+def viewdetail(request, rid):
+    return render (request, "viewdetail.html", {"report":ReportModel.objects.get(reportid=rid)})

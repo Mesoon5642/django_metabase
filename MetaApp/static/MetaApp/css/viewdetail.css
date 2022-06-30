@@ -22,3 +22,14 @@
     margin: 1rem;
     padding: 0;
 }
+#modify li{
+    padding: 1rem;
+    border: 4px solid rgb(128, 128, 255);
+    border-radius: 12px;
+    background-color: rgb(128, 128, 255);
+    color: white;
+    margin: 2rem;
+}
+#modify a{
+    text-decoration: none;
+}

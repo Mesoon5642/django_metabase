@@ -11,5 +11,5 @@ urlpatterns = [
     path("login/", views.login, name="login"),
     path("createaccount/", views.create, name="create"),
     path("viewreports/", views.viewreports, name="viewreports"),
-    path("viewdetail/<str:reportname>", views.viewdetail, name="viewdetail")
+    path("viewdetail/<int:rid>", views.viewdetail, name="viewdetail")
 ]

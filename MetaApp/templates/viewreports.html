@@ -12,7 +12,7 @@
             <body>
                 <div id="reports">
                     {%for report in reportobjects%}
-                        <a href="/MetaApp/viewdetail/{{report.eventname}}"id="reportlink{{forloop.counter}}">
+                        <a href="/MetaApp/viewdetail/{{report.reportid}}"id="reportlink{{forloop.counter}}">
                             <article id="report{{forloop.counter}}">
                                 <h3>{{report.eventname}}</h3>
                                 <h3>{{report.date}}</h3>

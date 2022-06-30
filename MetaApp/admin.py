@@ -28,7 +28,7 @@ class ReportModelAdmin(admin.ModelAdmin):
     list_display = ("eventname", "date", "author")
     ordering = ["date"]
     fieldsets = (
-        ("Main", {"fields": ["eventname", "date", "target", "techinvolved", "description", "mainlink", "closed", "author"]}),
+        ("Main", {"fields": ["eventname", "date", "target", "techinvolved", "description", "mainlink", "closed", "reportid", "author"]}),
         ("Extras", {"fields": ["targetother", "cryptoamount"]}),
         ("Related Data", {"fields": ["relevantlocations", "suspects", "evidence"]})
     )
@@ -41,6 +41,7 @@ class AdminUserModelAdmin(admin.ModelAdmin):
             obj.verified = True
             obj.save()
     list_display = ("realname", "username", "verified")
+    list_filter = ["verified"]
     ordering = ["realname"]
     actions = ["verify"]
 admin.site.register(ReportModel, ReportModelAdmin)

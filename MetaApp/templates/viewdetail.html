@@ -15,9 +15,9 @@
                     <div id="addbar">
                         <h1>Modify Report</h1>
                         <ul id="modify">
-                            <li><a>Add Suspect</a></li>
-                            <li><a>Add Evidence</a></li>
-                            <li><a>Add Relevant Location</a></li>
+                            <a><li>Add Suspect</li></a>
+                            <a><li>Add Evidence</li></a>
+                            <a><li>Add Relevant Location</li></a>
                     </div>
                     <div id="report">
                         <h1>View Report</h1>
@@ -28,6 +28,9 @@
                             <h2>Other Target: {{report.targetother}}</h2>
                         {%endif%}
                         <h2>Tech Involved: {{report.readabletech}}</h2>
+                        {% if report.cryptoamount > 0%}
+                            <h2>Crypto Amount: ${{report.cryptoamount}}</h2>
+                        {%endif%}
                         <h2>Description: {{report.description}}</h2>
                         <h2>Main Link: {{report.mainlink}}</h2>
                         <h2>Report Author: {{report.author}}</h2>
