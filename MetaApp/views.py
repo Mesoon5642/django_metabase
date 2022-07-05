@@ -6,7 +6,7 @@ from django.template import RequestContext
 import json
 from httplib2 import Http
 from .forms import CreateAccountForm, EvidenceForm, RelevantLocationForm, ReportForm, LoginForm, SuspectForm
-from .models import AdminUserModel, EvidenceModel, RelevantLocationModel, ReportModel
+from .models import AdminUserModel, EvidenceModel, RelevantLocationModel, ReportModel, SuspectModel
 import random
 
 # Create your views here.
@@ -90,7 +90,7 @@ def addsuspect(request, rid):
     else:
         suspectform = SuspectForm(request.POST)
         if suspectform.is_valid():
-            suspectmodel = EvidenceModel.objects.create()
+            suspectmodel = SuspectModel.objects.create()
             suspectmodel.name = suspectform.cleaned_data.get("name")
             suspectmodel.description = suspectform.cleaned_data.get("description")
             suspectmodel.age = suspectform.cleaned_data.get("age")
@@ -131,7 +131,7 @@ def susaddevidence(request, rid, sid):
             evidencemodel.datefound = evidenceform.cleaned_data.get("datefound")
             evidencemodel.description = evidenceform.cleaned_data.get("description")
             evidencemodel.save()
-            reportsus = ReportModel.objects.get(reportid=rid).suspects.get(id=sid)
+            reportsus = ReportModel.objects.get(reportid=rid).suspects.get(susid=sid)
             reportsus.evidence.add(evidencemodel)
             reportsus.save()
             return render (request, "thanks.html")
@@ -146,7 +146,7 @@ def susaddlocation(request, rid, sid):
             locationmodel.name = locationform.cleaned_data.get("name")
             locationmodel.description = locationform.cleaned_data.get("description")
             locationmodel.save()
-            reportsus = ReportModel.objects.get(reportid=rid).suspects.get(id=sid)
+            reportsus = ReportModel.objects.get(reportid=rid).suspects.get(susid=sid)
             reportsus.locations.add(locationmodel)
             reportsus.save()
             return render (request, "thanks.html")

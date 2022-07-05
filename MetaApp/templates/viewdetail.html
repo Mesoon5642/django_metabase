@@ -36,7 +36,42 @@
                         <h2>Report Author: {{report.author}}</h2>
                         {% comment %} Restyle this button {% endcomment %}
                         <h2>Suspects: <span id="showsus">Show</span></h2>
+                        <h2>Evidence: <span id="showev">Show</span></h2>
+                        <h2>Locations: <span id="showloc">Show</span></h2>
                     </div>
+                </div>
+                <div style="display:none" id="suspectdetails" class="details">
+                    {%for suspect in report.suspects.all%}
+                        <a href=""id="suspectlink{{forloop.counter}}">
+                            <article id="suspect{{forloop.counter}}">
+                                <h3>{{suspect.name}}</h3>
+                                <h3>Is Guilty?: {{suspect.guilty}}</h3>
+                                <a href="/MetaApp/addsuspect/{{report.reportid}}/addevidence/{{suspect.susid}}" class="add">Add Evidence</a>
+                                <a href="/MetaApp/addsuspect/{{report.reportid}}/addlocation/{{suspect.susid}}" class="add">Add Relevant Location</a>
+                            </article>
+                        </a>
+                    {%endfor%}
+                </div>
+                <div style="display:none" id="evidencedetails" class="details">
+                    {%for evidence in report.evidence.all%}
+                        <a href=""id="evidencelink{{forloop.counter}}">
+                            <article id="evidence{{forloop.counter}}">
+                                <h3>{{evidence.name}}</h3>
+                                <h3>Date Found: {{evidence.datefound}}</h3>
+                                <h3>Description: {{evidence.description}}</h3>
+                            </article>
+                        </a>
+                    {%endfor%}
+                </div>
+                <div style="display:none" id="locationdetails" class="details">
+                    {%for location in report.relevantlocations.all%}
+                        <a href=""id="locationlink{{forloop.counter}}">
+                            <article id="location{{forloop.counter}}">
+                                <h3>{{location.name}}</h3>
+                                <h3>Description: {{location.description}}</h3>
+                            </article>
+                        </a>
+                    {%endfor%}
                 </div>
             </body>
         </div>
