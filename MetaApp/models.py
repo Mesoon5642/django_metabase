@@ -29,6 +29,7 @@ class SuspectModel(models.Model):
     locations = models.ManyToManyField(RelevantLocationModel)
     evidence = models.ManyToManyField(EvidenceModel)
     guilty = models.BooleanField(default=False)
+    susid = models.IntegerField("ID", default=0000000)
     def __str__(self):
         return self.name
 class ReportModel(models.Model):

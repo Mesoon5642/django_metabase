@@ -7,7 +7,7 @@
             <link rel="stylesheet" type="text/css" href="{% static "MetaApp/css/base.css" %}">
             <link rel="stylesheet" type="text/css" href="{% static "MetaApp/css/login.css" %}">
             <script src="{% static "MetaApp/javascript/annoyingmarkers.js"%}" defer></script>
-            <title>Login</title>
+            <title>Add Suspect</title>
         </head>
     {%endblock%}
     <body>
@@ -15,14 +15,15 @@
         <div id="main_content">
             <form method="POST">
                 {%csrf_token%}
-                <h1>Login</h1>
+                <h1>Add Suspect</h1>
                 <ul>
-                    <li id="username">{{login_form.username.label_tag}}{{login_form.username}}</li>
-                    <li id="password">{{login_form.password.label_tag}}{{login_form.password}}</li>
+                    <li id="name">{{suspect_form.name.label_tag}}{{suspect_form.name}}</li>
+                    <li id="description">{{suspect_form.description.label_tag}}{{suspect_form.description}}</li>
+                    <li id="age">{{suspect_form.age.label_tag}}{{suspect_form.age}}</li>
+                    <li id="guilty">{{suspect_form.guilty.label_tag}}{{suspect_form.guilty}}</li>
                 </ul>
                 <div id="buttons">
-                    <button type="submit" id="login_button">Login</button>
-                    <a id="create_acc" href="/MetaApp/createaccount">Create Account</a>
+                    <button type="submit" id="submit">Submit</button>
                 </div>
             </form>
         </div>

@@ -44,7 +44,8 @@ class EvidenceForm(ModelForm):
         model = EvidenceModel
         fields = ("name", "datefound", "description")
         widgets = {
-            "datefound": DateInput(attrs={'type': 'date'})
+            "datefound": DateInput(attrs={'type': 'date'}),
+            "description": forms.Textarea(attrs={'rows': 5})
         }
 class SuspectForm(ModelForm):
     class Meta:

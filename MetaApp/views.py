@@ -6,7 +6,7 @@ from django.template import RequestContext
 import json
 from httplib2 import Http
 from .forms import CreateAccountForm, EvidenceForm, RelevantLocationForm, ReportForm, LoginForm, SuspectForm
-from .models import AdminUserModel, ReportModel
+from .models import AdminUserModel, EvidenceModel, RelevantLocationModel, ReportModel
 import random
 
 # Create your views here.
@@ -29,12 +29,9 @@ def submit_report(request):
             reportmodel.readabletech = reportmodel.readtech()
             if (reportform.cleaned_data.get("cryptoamount")):
                 reportmodel.cryptoamount = reportform.cleaned_data.get("cryptoamount")
-            print(random.randint(1000000, 9999999))
             tempid = random.randint(1000000, 9999999)
-            print(tempid)
             while (ReportModel.objects.filter(reportid=tempid).count() > 0):
                 tempid = random.randint(1000000, 9999999)
-            print(tempid)
             reportmodel.reportid = tempid
             reportmodel.save()
             return render (request, "thanks.html")
@@ -76,16 +73,81 @@ def addevidence(request, rid):
         return HttpResponseRedirect(reverse("MetaApp:login"))
     else:
         evidenceform = EvidenceForm(request.POST)
+        if evidenceform.is_valid():
+            evidencemodel = EvidenceModel.objects.create()
+            evidencemodel.name = evidenceform.cleaned_data.get("name")
+            evidencemodel.datefound = evidenceform.cleaned_data.get("datefound")
+            evidencemodel.description = evidenceform.cleaned_data.get("description")
+            evidencemodel.save()
+            reportmodel = ReportModel.objects.get(reportid=rid)
+            reportmodel.evidence.add(evidencemodel)
+            reportmodel.save()
+            return render (request, "thanks.html")
     return render (request, "addevidence.html", {"report":ReportModel.objects.get(reportid=rid), "evidence_form":evidenceform})
 def addsuspect(request, rid):
     if (request.COOKIES["LOGGED_USERNAME"] == ""):
         return HttpResponseRedirect(reverse("MetaApp:login"))
     else:
         suspectform = SuspectForm(request.POST)
+        if suspectform.is_valid():
+            suspectmodel = EvidenceModel.objects.create()
+            suspectmodel.name = suspectform.cleaned_data.get("name")
+            suspectmodel.description = suspectform.cleaned_data.get("description")
+            suspectmodel.age = suspectform.cleaned_data.get("age")
+            suspectmodel.guilty = suspectform.cleaned_data.get("guilty")
+            tempid = random.randint(1000000, 9999999)
+            while (ReportModel.objects.get(reportid=rid).suspects.filter(susid=tempid).count() > 0):
+                tempid = random.randint(1000000, 9999999)
+            suspectmodel.susid = tempid
+            suspectmodel.save()
+            reportmodel = ReportModel.objects.get(reportid=rid)
+            reportmodel.suspects.add(suspectmodel)
+            reportmodel.save()
+            return render (request, "thanks.html")
     return render (request, "addsuspect.html", {"report":ReportModel.objects.get(reportid=rid), "suspect_form":suspectform})
 def addlocation(request, rid):
     if (request.COOKIES["LOGGED_USERNAME"] == ""):
         return HttpResponseRedirect(reverse("MetaApp:login"))
     else:
         locationform = RelevantLocationForm(request.POST)
+        if locationform.is_valid():
+            locationmodel = RelevantLocationModel.objects.create()
+            locationmodel.name = locationform.cleaned_data.get("name")
+            locationmodel.description = locationform.cleaned_data.get("description")
+            locationmodel.save()
+            reportmodel = ReportModel.objects.get(reportid=rid)
+            reportmodel.relevantlocations.add(locationmodel)
+            reportmodel.save()
+            return render (request, "thanks.html")
+    return render (request, "addlocation.html", {"report":ReportModel.objects.get(reportid=rid), "location_form":locationform})
+def susaddevidence(request, rid, sid):
+    if (request.COOKIES["LOGGED_USERNAME"] == ""):
+        return HttpResponseRedirect(reverse("MetaApp:login"))
+    else:
+        evidenceform = EvidenceForm(request.POST)
+        if evidenceform.is_valid():
+            evidencemodel = EvidenceModel.objects.create()
+            evidencemodel.name = evidenceform.cleaned_data.get("name")
+            evidencemodel.datefound = evidenceform.cleaned_data.get("datefound")
+            evidencemodel.description = evidenceform.cleaned_data.get("description")
+            evidencemodel.save()
+            reportsus = ReportModel.objects.get(reportid=rid).suspects.get(id=sid)
+            reportsus.evidence.add(evidencemodel)
+            reportsus.save()
+            return render (request, "thanks.html")
+    return render (request, "addevidence.html", {"report":ReportModel.objects.get(reportid=rid), "evidence_form":evidenceform})
+def susaddlocation(request, rid, sid):
+    if (request.COOKIES["LOGGED_USERNAME"] == ""):
+        return HttpResponseRedirect(reverse("MetaApp:login"))
+    else:
+        locationform = RelevantLocationForm(request.POST)
+        if locationform.is_valid():
+            locationmodel = EvidenceModel.objects.create()
+            locationmodel.name = locationform.cleaned_data.get("name")
+            locationmodel.description = locationform.cleaned_data.get("description")
+            locationmodel.save()
+            reportsus = ReportModel.objects.get(reportid=rid).suspects.get(id=sid)
+            reportsus.locations.add(locationmodel)
+            reportsus.save()
+            return render (request, "thanks.html")
     return render (request, "addlocation.html", {"report":ReportModel.objects.get(reportid=rid), "location_form":locationform})
