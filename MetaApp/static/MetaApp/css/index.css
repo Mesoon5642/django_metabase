@@ -6,17 +6,19 @@
 }
 #main_content a{
     display: block;
-    background-color: white;
+    background-color: #0B2545;
     padding: 30px 120px;
     margin: 2rem;
-    border: 3px solid rgb(128, 128, 255);
+    border: 3px solid #0B2545;
     text-decoration: none;
-    color: rgb(128, 128, 255);
+    color: #EEF4ED;
     font-size: 2rem;
+    font-weight: bold;
+    border-radius: 12px;
 }
 button{
     margin: 16px 30.75% 8px 30.75%;
 }
 body h1{
-    color: rgb(128, 128, 255)
+    color: #0B2545
 }

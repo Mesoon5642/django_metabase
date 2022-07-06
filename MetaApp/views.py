@@ -10,7 +10,12 @@ from .models import AdminUserModel, EvidenceModel, RelevantLocationModel, Report
 import random
 
 # Create your views here.
-
+tflop = True
+def initcookies(request):
+    if (tflop):
+        request.set_cookie("LOGGED_USERNAME", "")
+        request.set_cookie("LOGGED_REALNAME", "")
+        tflop = False
 def submit_report(request):
     if (request.COOKIES["LOGGED_USERNAME"] == ""):
         return HttpResponseRedirect(reverse("MetaApp:login"))
@@ -40,7 +45,8 @@ def submit_report(request):
 def thanks(request):
     return render (request, "thanks.html")
 def index(request):
-    return render (request, "index.html")
+    request = render (request, "index.html")
+    return request
 def viewdata(request):
     return render(request, "viewdata.html", {"tech_data":ReportModel.techcount(), "target_data":ReportModel.targetcount()})
 def login(request):

@@ -1,27 +1,37 @@
-header{
+.header{
     padding: 20px;
-    background-color: rgb(128, 128, 255);
+    background-color: #0B2545;
     margin: 0;
     top: 0;
     text-align: center;
     font-family: sans-serif;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
 }
 #big_button{
     font-size: 3rem;
 }
 #mini_links{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    background-color: #8DA9C4;
+    border-bottom: 4px solid #0B2545
 }
 #mini_links a {
     margin: auto 5px;
-}
-header a{
+    color: #0B2545;
     font-size: 2rem;
-    color: white;
+}
+.header a{
+    font-size: 1.5rem;
+    color: #EEF4ED;
     text-decoration: none;
     font-weight: bold;
-    margin: 15px 0;
+    margin: 1rem 0;
     display: block;
 }
 body{
@@ -31,13 +41,16 @@ body{
 }
 button{
     background-color: white;
-    border: 3px solid rgb(128, 128, 255);
+    border: 3px solid #0B2545;
     border-radius: 8px;
-    color: rgb(128, 128, 255);
+    color: #0B2545;
     padding: 10px 20px;
     font-size: 1rem;
     cursor: pointer;
 }
 textarea{
     resize: none;
+}
+header .links {
+    margin: 0 1rem;
 }

@@ -12,18 +12,20 @@
     <body>
         {% comment %} Fix this below :( {% endcomment %}
         {% block header %}
-        <header>
+        <header class="header">
             <script src="{% static "MetaApp/javascript/cookies.js"%}" defer></script>
             <script src="{% static "MetaApp/javascript/index.js"%}" defer></script>
-            <a id="login" href="/MetaApp/login">Login</a> {%comment %} Change this to go to profile details page or something {%endcomment%}
-            <a id="logout" style="display:block; cursor:pointer;">Logout</a>
-            <a id="big_button" href="/MetaApp">Meta Data</a>
-            <div id="mini_links">
-                <a id="viewdata" href="/MetaApp/viewdata">Data View</a>
-                <a id="submit_header" href="/MetaApp/submit_report">Submit Report</a>
-                <a id="viewcases" href="/MetaApp/viewreports">View Reports</a>
+            <a id="big_button" class="links" href="/MetaApp">MetaData</a>
+            <div id="logs" class="links">
+                <a id="login" href="/MetaApp/login">Login</a> {%comment %} Change this to go to profile details page or something {%endcomment%}
+                <a id="logout" style="display:block; cursor:pointer;">Logout</a>
             </div>
         </header>
+        <div id="mini_links" class="header">
+            <a id="viewdata" href="/MetaApp/viewdata">Data View</a>
+            <a id="submit_header" href="/MetaApp/submit_report">Submit Report</a>
+            <a id="viewcases" href="/MetaApp/viewreports">View Reports</a>
+        </div>
         {%endblock%}
         <div id="main_content">
             {% block "main"%}
