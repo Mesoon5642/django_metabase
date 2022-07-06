@@ -11,10 +11,9 @@
         <title>Submit Report</title>
     </head>
     {% endblock %}
+    {% block "header"%}{%endblock%}
     <body>
-        {% block "header"%}{%endblock%}
         {%block "main"%}
-        <div id="main_content">
             <div id="main_form">
                 <h1>Submit Form</h1>
                 <form method="POST">
@@ -33,7 +32,6 @@
                     <button type="submit" id="submit">Submit</button>
                 </form>
             </div>
-        </div>
         {%endblock%}
     </body>
 </html>

@@ -15,10 +15,17 @@
     font-size: 2rem;
     font-weight: bold;
     border-radius: 12px;
+    transition: padding 0.75s;
+}
+#main_content a:hover{
+    padding: 37.5px 150px;
 }
 button{
     margin: 16px 30.75% 8px 30.75%;
 }
 body h1{
-    color: #0B2545
+    transform: rotate(0deg);
+    font-size: 6rem;
+    box-shadow: 0px 0px 0px black;
+    color: #0B2545;
 }

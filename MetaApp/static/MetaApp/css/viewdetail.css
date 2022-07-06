@@ -29,9 +29,13 @@
     background-color: #0B2545;
     color: #EEF4ED;
     margin: 2rem;
+    transition: padding 0.75s;
 }
 #modify a{
     text-decoration: none;
+}
+#modify li:hover{
+    padding: 1.5rem;
 }
 .details article{
     display: inline-block;
@@ -57,4 +61,9 @@
     text-decoration: none;
     margin: 1rem;
     color:#0B2545;
+}
+span:hover{
+    color: #134074;
+    text-decoration: underline;
+    cursor: pointer;
 }

@@ -14,6 +14,13 @@ header{
 }
 #big_button{
     font-size: 3rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background-color: #0B2545;
+    transition: background-color 0.25s;
+}
+#big_button:hover{
+    background-color: #134074;
 }
 #mini_links{
     display: flex;
@@ -25,6 +32,10 @@ header{
     margin: auto 5px;
     color: #0B2545;
     font-size: 2rem;
+    transition: font-size 0.75s;
+}
+#mini_links a:hover{
+    font-size: 2.25rem
 }
 .header a{
     font-size: 1.5rem;
@@ -53,4 +64,8 @@ textarea{
 }
 header .links {
     margin: 0 1rem;
+}
+html, body {
+    margin: 0;
+    height: 100%;
 }

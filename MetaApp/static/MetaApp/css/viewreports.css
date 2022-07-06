@@ -1,12 +1,20 @@
-article {
+.reportdetail {
     background-color: #EEF4ED;
     border: 4px solid #0B2545;
     border-radius: 12px;
     padding: 2rem;
     margin: 1rem;
     text-align: center;
-    color: #0B2545;
     text-decoration: none;
+    display: block;
+    font-size: 1rem;
+    transition: background-color 0.75s;
+}
+.reportdetail:hover{
+    background-color: whitesmoke;
+}
+article{
+    color: #0B2545;
 }
 a{
     text-decoration: none;
