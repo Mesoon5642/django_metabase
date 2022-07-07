@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "MetaApp",
-    "crispy_forms"
+    "MetaApp"
 ]
 crispy_template_pack = "uni_form"
 MIDDLEWARE = [
