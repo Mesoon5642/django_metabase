@@ -4,7 +4,6 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.template import RequestContext
 import json
-from httplib2 import Http
 from .forms import CreateAccountForm, EvidenceForm, RelevantLocationForm, ReportForm, LoginForm, SuspectForm
 from .models import AdminUserModel, EvidenceModel, RelevantLocationModel, ReportModel, SuspectModel
 import random
@@ -71,7 +70,8 @@ def create(request):
         return render (request, "thanks.html")
     return render (request, "create_account.html", {"create_form":createform})
 def viewreports(request):
-    return render (request, "viewreports.html", {"reportobjects":ReportModel.objects.all()})
+    response = render (request, "viewreports.html", {"reportobjects":ReportModel.objects.all()})
+    return response
 def viewdetail(request, rid):
     return render (request, "viewdetail.html", {"report":ReportModel.objects.get(reportid=rid)})
 def addevidence(request, rid):

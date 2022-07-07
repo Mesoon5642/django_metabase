@@ -21,7 +21,7 @@ select, button, #id_date, body{
     align-items: center;
 }
 #main_form{
-    background-color: #EEF4ED;
+    background-color: white;
     border: 4px solid #0B2545;
     border-radius: 12px;
     display: block;
@@ -53,7 +53,7 @@ select, button, #id_date, body{
 }
 #main_form h1{
     color: #0B2545;
-    text-shadow: 1px 1px #EEF4ED;
+    text-shadow: 1px 1px white;
     margin: auto auto;
 }
 button{

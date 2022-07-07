@@ -5,17 +5,22 @@
     {%block "styles"%}
         <link rel="stylesheet" type="text/css" href="{% static "MetaApp/css/base.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "MetaApp/css/viewreports.css" %}">
+        <script src="{% static "MetaApp/javascript/cookies.js"%}" defer></script>
+        <script src="{% static "MetaApp/javascript/viewreports.js" %}" defer></script>
         <title>View Reports</title>
     {%endblock%}
     {%block "main"%}
         <div id="main">
             <body>
+                <div id="search">
+                    <input id="searchbox" value="Search by Report Name..."></input>
+                </div>
                 <div id="reports">
                     {%for report in reportobjects%}
-                    <div class="reportdetail">
+                    <div class="reportdetail" data-name="{{report.eventname}}">
                         <a href="/MetaApp/viewdetail/{{report.reportid}}"id="reportlink{{forloop.counter}}">
                             <article id="report{{forloop.counter}}">
-                                <h3>{{report.eventname}}</h3>
+                                <h3 class="eventname">{{report.eventname}}</h3>
                                 <h3>{{report.date}}</h3>
                                 <h3>Is Closed?: {{report.closed}}</h3>
                             </article>

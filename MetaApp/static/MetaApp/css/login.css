@@ -17,7 +17,7 @@ ul{
     align-items: center;
 }
 form{
-    background-color: #EEF4ED;
+    background-color: white;
     border: 4px solid #0B2545;
     border-radius: 12px;
     display: inline;
@@ -39,7 +39,7 @@ form button, a{
 }
 #login_button, #create_button{
     background-color: #0B2545;
-    color: #EEF4ED;
+    color: white;
 }
 #buttons{
     display: flex;
@@ -49,7 +49,7 @@ a{
     background-color: #0B2545;
     border: 3px solid #0B2545;
     border-radius: 8px;
-    color: #EEF4ED;
+    color: white;
     padding: 10px 20px;
     font-size: 1rem;
     cursor: pointer;
