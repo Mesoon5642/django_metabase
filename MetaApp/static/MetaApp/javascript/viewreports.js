@@ -13,11 +13,11 @@ function SearchFunction(event){
     if (searchbox.value != "Search by Report Name..." && searchbox.value != "" && event.key === "Enter"){
         reports = document.querySelectorAll(".reportdetail");
         for (const report of reports){
-            if (searchbox.value === report.dataset.name){
-                report.style.display = "block";
-            } else {
-                report.style.display = "none";
-            }
+            report.style.display = "none";
+        }
+        // cleanedreports = reports.fuzzySearch(searchbox.value);
+        for (const report of reports){
+            report.style.display = "block";
         }
     }
 }
