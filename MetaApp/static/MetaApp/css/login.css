@@ -41,6 +41,10 @@ form button, a{
     background-color: #0B2545;
     color: white;
 }
+.fancybutton{
+    background-color: #0B2545;
+    color: white;
+}
 #buttons{
     display: flex;
     flex-direction: column;
