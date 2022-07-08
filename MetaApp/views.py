@@ -1,4 +1,5 @@
 from multiprocessing import context
+from xmlrpc.client import Boolean
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
@@ -9,12 +10,19 @@ from .models import AdminUserModel, EvidenceModel, RelevantLocationModel, Report
 import random
 
 # Create your views here.
-tflop = True
-def initcookies(response, tflop):
-    if (tflop):
+class Tflop():
+    def __init__(self, tflop):
+        self.tflop = tflop
+    def gettflop(self):
+        return self.tflop
+    def settflop(self, tflop):
+        self.tflop = tflop
+toggle = Tflop(False)
+def initcookies(response, toggle):
+    if (toggle.gettflop()):
         response.set_cookie("LOGGED_USERNAME", "")
         response.set_cookie("LOGGED_REALNAME", "")
-        tflop = False
+        toggle.settflop(True)
 def submit_report(request):
     if (request.COOKIES["LOGGED_USERNAME"] == ""):
         return HttpResponseRedirect(reverse("MetaApp:login"))
@@ -45,7 +53,7 @@ def thanks(request):
     return render (request, "thanks.html")
 def index(request):
     response = render (request, "index.html")
-    initcookies(response, tflop)
+    initcookies(response, toggle)
     return response
 def viewdata(request):
     return render(request, "viewdata.html", {"tech_data":ReportModel.techcount(), "target_data":ReportModel.targetcount()})
