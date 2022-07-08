@@ -10,10 +10,10 @@ import random
 
 # Create your views here.
 tflop = True
-def initcookies(request):
+def initcookies(response, tflop):
     if (tflop):
-        request.set_cookie("LOGGED_USERNAME", "")
-        request.set_cookie("LOGGED_REALNAME", "")
+        response.set_cookie("LOGGED_USERNAME", "")
+        response.set_cookie("LOGGED_REALNAME", "")
         tflop = False
 def submit_report(request):
     if (request.COOKIES["LOGGED_USERNAME"] == ""):
@@ -44,8 +44,9 @@ def submit_report(request):
 def thanks(request):
     return render (request, "thanks.html")
 def index(request):
-    request = render (request, "index.html")
-    return request
+    response = render (request, "index.html")
+    initcookies(response, tflop)
+    return response
 def viewdata(request):
     return render(request, "viewdata.html", {"tech_data":ReportModel.techcount(), "target_data":ReportModel.targetcount()})
 def login(request):
