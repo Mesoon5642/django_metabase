@@ -2,7 +2,7 @@ login = document.getElementById("login");
 logout = document.getElementById("logout");
 logout.addEventListener("click", Logout);
 username = getCookie("LOGGED_USERNAME");
-if (username != "" && login.innerText != "Hello, " + username){
+if (username != "\"\"" && login.innerText != "Hello, " + username){
     login.style.display = "none"
     login.innerText = "Hello, " + username;
     login.href = "javascript:void(0)";
