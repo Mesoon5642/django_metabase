@@ -69,3 +69,7 @@ html, body {
     margin: 0;
     height: 100%;
 }
+.fancybutton{
+    background-color: #0B2545;
+    color: white;
+}

@@ -13,6 +13,17 @@
     {%block "main"%}
         <div id="main">
             <body>
+                <div id="sortfilter">
+                    <div id="filtertopbar">
+                        <h1>Sort</h1>
+                    </div>
+                    <div id="sort">
+                        <h2>Sort by:<h2>
+                        <p><span class ="sort" data-sort="eventname">Event Name</span></p>
+                        <p><span class ="sort" data-sort="date">Date</span></p>
+                        <p><span class ="sort" data-sort="closed">Closed</span></p>
+                    </div>
+                </div>
                 <div id="reports">
                     <div id="search">
                         <input id="searchbox" class="fuzzy-search" type="text" value="Search by Report Name..."></input>
@@ -25,8 +36,8 @@
                                     <a href="/MetaApp/viewdetail/{{report.reportid}}"id="reportlink{{forloop.counter}}">
                                         <article id="report{{forloop.counter}}">
                                             <h3 class="eventname">{{report.eventname}}</h3>
-                                            <h3>{{report.date}}</h3>
-                                            <h3>Is Closed?: {{report.closed}}</h3>
+                                            <h3 class="date">{{report.date}}</h3>
+                                            <h3 class="closed">Is Closed?: {{report.closed}}</h3>
                                         </article>
                                     </a>
                                 </div>
@@ -37,7 +48,7 @@
                 </div>
                 <script type="text/javascript">
                     var options = {
-                        valueNames: [ 'eventname' ],
+                        valueNames: [ 'eventname', "date", "closed"],
                         fuzzySearch: {
                             searchClass: "fuzzy-search",
                             location: 0,
@@ -46,7 +57,7 @@
                             multiSearch: true
                           }
                     };
-                    var reportslistjs = new List('reports', options);
+                    var reportslistjs = new List('main', options);
                 </script>
             </body>
         </div>
