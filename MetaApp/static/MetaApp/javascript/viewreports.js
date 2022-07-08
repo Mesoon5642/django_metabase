@@ -2,7 +2,6 @@ searchbox = document.getElementById("searchbox");
 searchbox.addEventListener("focus", OnFocus);
 searchbox.addEventListener("focusout", OnUnfocus);
 searchbox.addEventListener("keyup", SearchFunction);
-
 function OnFocus(){
     if (searchbox.value == "Search by Report Name..."){
         searchbox.value = "";
@@ -11,14 +10,7 @@ function OnFocus(){
 }
 function SearchFunction(event){
     if (searchbox.value != "Search by Report Name..." && searchbox.value != "" && event.key === "Enter"){
-        reports = document.querySelectorAll(".reportdetail");
-        for (const report of reports){
-            report.style.display = "none";
-        }
-        // cleanedreports = reports.fuzzySearch(searchbox.value);
-        for (const report of reports){
-            report.style.display = "block";
-        }
+        reportslistjs.fuzzySearch(searchbox.value);
     }
 }
 function OnUnfocus(){

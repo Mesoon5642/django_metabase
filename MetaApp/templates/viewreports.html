@@ -3,7 +3,7 @@
 
 <html>
     {%block "styles"%}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.0.2/list.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.1.0/list.min.js"></script>
         <link rel="stylesheet" type="text/css" href="{% static "MetaApp/css/base.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "MetaApp/css/viewreports.css" %}">
         <script src="{% static "MetaApp/javascript/cookies.js"%}" defer></script>
@@ -13,22 +13,41 @@
     {%block "main"%}
         <div id="main">
             <body>
-                <div id="search">
-                    <input id="searchbox" value="Search by Report Name..."></input>
-                </div>
                 <div id="reports">
-                    {%for report in reportobjects%}
-                    <div class="reportdetail" data-name="{{report.eventname}}">
-                        <a href="/MetaApp/viewdetail/{{report.reportid}}"id="reportlink{{forloop.counter}}">
-                            <article id="report{{forloop.counter}}">
-                                <h3 class="eventname">{{report.eventname}}</h3>
-                                <h3>{{report.date}}</h3>
-                                <h3>Is Closed?: {{report.closed}}</h3>
-                            </article>
-                        </a>
+                    <div id="search">
+                        <input id="searchbox" class="fuzzy-search" type="text" value="Search by Report Name..."></input>
                     </div>
-                    {%endfor%}
+                    <div id="reportlistdiv">
+                        <ul class="list" id="reportlist">
+                            {%for report in reportobjects%}
+                            <li class="reportli">   
+                                <div class="reportdetail" data-name="{{report.eventname}}">
+                                    <a href="/MetaApp/viewdetail/{{report.reportid}}"id="reportlink{{forloop.counter}}">
+                                        <article id="report{{forloop.counter}}">
+                                            <h3 class="eventname">{{report.eventname}}</h3>
+                                            <h3>{{report.date}}</h3>
+                                            <h3>Is Closed?: {{report.closed}}</h3>
+                                        </article>
+                                    </a>
+                                </div>
+                            </li>
+                            {%endfor%}
+                            </ul>
+                    </div>
                 </div>
+                <script type="text/javascript">
+                    var options = {
+                        valueNames: [ 'eventname' ],
+                        fuzzySearch: {
+                            searchClass: "fuzzy-search",
+                            location: 0,
+                            distance: 100,
+                            threshold: 0.4,
+                            multiSearch: true
+                          }
+                    };
+                    var reportslistjs = new List('reports', options);
+                </script>
             </body>
         </div>
     {%endblock%}

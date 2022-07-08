@@ -19,9 +19,10 @@ article{
 a{
     text-decoration: none;
 }
-#reports {
+#reports ul{
     display: grid;
     grid: auto-flow / 1fr 1fr 1fr;
+    list-style: none;
 }
 #search{
     display: flex;
