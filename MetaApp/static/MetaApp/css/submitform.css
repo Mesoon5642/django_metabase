@@ -50,20 +50,37 @@ select, button, #id_date, body{
     border: 1px solid gray;
     width: 206px;
     margin-bottom: 1rem;
+    text-align: left;
+}
+#main_form{
+    text-align: center;
+    color: #0B2545;
 }
 #main_form h1{
     color: #0B2545;
     text-shadow: 1px 1px white;
     margin: auto auto;
 }
+#central_content input, #id_cryptoamount, #id_techinvolved, #central_content select{
+    width: 100%;
+    box-sizing: border-box;
+}
 button{
-    background-color: #8DA9C4;
+    background-color: #0B2545;
     border: 3px solid #0B2545;
     border-radius: 8px;
-    color: #0B2545;
-    padding: 10px 20px;
+    color: white;
+    padding: 0.8rem 3rem;
     margin: 16px 30.75% 8px 30.75%;
 }
 #target_other, #cryptoamount{
     display: none;
+}
+#id_date, #id_target{
+    text-align: center;
+    color: #0B2545;
+}
+#id_target{
+    background-color: white;
+    border: 1px solid gray;
 }

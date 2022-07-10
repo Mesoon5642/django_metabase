@@ -4,6 +4,10 @@ TARGETS = [
     ("Individual", "Individual"),
     ("School", "School"),
     ("Public Building", "Public Building"),
+    ("Crypto Exchange", "Crypto Exchange"),
+    ("Online Gaming Platform", "Online Gaming Platform"),
+    ("Corporation", "Corporation"),
+    ("Online Forum", "Online Forum"),
     ("Other", "Other")
 ]
 # Create your models here.
@@ -20,6 +24,7 @@ class EvidenceModel(models.Model):
     name = models.CharField(max_length=200, default="")
     datefound = models.CharField(max_length=100)
     description = models.CharField(max_length=2000, default="")
+    datefound.verbose_name = "Date Found"
     def __str__(self):
         return self.name
 class SuspectModel(models.Model):

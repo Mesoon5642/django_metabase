@@ -4,7 +4,7 @@ crypt = document.getElementById("id_techinvolved_1");
 cryptoamount = document.getElementById("cryptoamount");
 target.onchange = checkOther;
 function checkOther(){
-    if (target.selectedIndex == 4){
+    if (target.selectedIndex == 8){
         hiddenother.style.display = "block";
     } else {
         hiddenother.style.display = "none";

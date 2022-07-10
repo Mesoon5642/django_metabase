@@ -28,7 +28,7 @@ def submit_report(request):
         return HttpResponseRedirect(reverse("MetaApp:login"))
     else:
         reportform = ReportForm(request.POST)
-        if reportform.is_valid() and ReportModel.objects.filter(eventname=reportform.cleaned_data.get("eventname")).count() < 1:
+        if reportform.is_valid():
             reportmodel = ReportModel.objects.create()
             reportmodel.eventname = reportform.cleaned_data.get("eventname")
             reportmodel.date = reportform.cleaned_data.get("date")

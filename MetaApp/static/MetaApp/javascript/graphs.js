@@ -1,4 +1,3 @@
-console.log("bruh2")
 var techarr = eval(graphdata)
 var targetarr = eval(targetdata)
 main()
@@ -24,7 +23,11 @@ function drawChart(){
         ["Individual", targetarr[0]],
         ["School", targetarr[1]],
         ["Public Building", targetarr[2]],
-        ["Other", targetarr[3]]
+        ["Crypto Exchange", targetarr[3]],
+        ["Online Gaming Platform", targetarr[4]],
+        ["Corporation", targetarr[5]],
+        ["Online Forum", targetarr[6]],
+        ["Other", targetarr[7]]
     ]);
     var options1 = {
         title: "Common Metaverse Crime Targets",

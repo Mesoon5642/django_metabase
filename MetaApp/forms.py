@@ -5,7 +5,7 @@ from .models import EvidenceModel, RelevantLocationModel, ReportModel, AdminUser
 
 class ReportForm(ModelForm):
     targetother = forms.CharField(required=False, label="Other Target")
-    cryptoamount = forms.DecimalField(required=False, decimal_places=2, max_digits=100)
+    cryptoamount = forms.DecimalField(required=False, decimal_places=2, max_digits=100, label="Crypto Amount")
     class Meta:
         model = ReportModel
         fields = ("eventname", "date", "target", "techinvolved", "description", "mainlink", "targetother", "cryptoamount")
