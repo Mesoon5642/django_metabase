@@ -22,7 +22,7 @@ def initcookies(response, toggle):
     if (toggle.gettflop()):
         response.set_cookie("LOGGED_USERNAME", "")
         response.set_cookie("LOGGED_REALNAME", "")
-        toggle.settflop(True)
+        toggle.settflop(False)
 def submit_report(request):
     if (request.COOKIES["LOGGED_USERNAME"] == ""):
         return HttpResponseRedirect(reverse("MetaApp:login"))
@@ -93,6 +93,10 @@ def addevidence(request, rid):
             evidencemodel.name = evidenceform.cleaned_data.get("name")
             evidencemodel.datefound = evidenceform.cleaned_data.get("datefound")
             evidencemodel.description = evidenceform.cleaned_data.get("description")
+            tempid = random.randint(1000000, 9999999)
+            while (EvidenceModel.objects.filter(evid=tempid).count() > 0):
+                tempid = random.randint(1000000, 9999999)
+            evidencemodel.evid = tempid
             evidencemodel.save()
             reportmodel = ReportModel.objects.get(reportid=rid)
             reportmodel.evidence.add(evidencemodel)
@@ -111,7 +115,7 @@ def addsuspect(request, rid):
             suspectmodel.age = suspectform.cleaned_data.get("age")
             suspectmodel.guilty = suspectform.cleaned_data.get("guilty")
             tempid = random.randint(1000000, 9999999)
-            while (ReportModel.objects.get(reportid=rid).suspects.filter(susid=tempid).count() > 0):
+            while (SuspectModel.objects.filter(susid=tempid).count() > 0):
                 tempid = random.randint(1000000, 9999999)
             suspectmodel.susid = tempid
             suspectmodel.save()
@@ -129,6 +133,10 @@ def addlocation(request, rid):
             locationmodel = RelevantLocationModel.objects.create()
             locationmodel.name = locationform.cleaned_data.get("name")
             locationmodel.description = locationform.cleaned_data.get("description")
+            tempid = random.randint(1000000, 9999999)
+            while (RelevantLocationModel.objects.filter(locid=tempid).count() > 0):
+                tempid = random.randint(1000000, 9999999)
+            locationmodel.locid = tempid
             locationmodel.save()
             reportmodel = ReportModel.objects.get(reportid=rid)
             reportmodel.relevantlocations.add(locationmodel)
@@ -145,6 +153,10 @@ def susaddevidence(request, rid, sid):
             evidencemodel.name = evidenceform.cleaned_data.get("name")
             evidencemodel.datefound = evidenceform.cleaned_data.get("datefound")
             evidencemodel.description = evidenceform.cleaned_data.get("description")
+            tempid = random.randint(1000000, 9999999)
+            while (EvidenceModel.objects.filter(evid=tempid).count() > 0):
+                tempid = random.randint(1000000, 9999999)
+            evidencemodel.evid = tempid
             evidencemodel.save()
             reportsus = ReportModel.objects.get(reportid=rid).suspects.get(susid=sid)
             reportsus.evidence.add(evidencemodel)
@@ -160,6 +172,10 @@ def susaddlocation(request, rid, sid):
             locationmodel = RelevantLocationModel.objects.create()
             locationmodel.name = locationform.cleaned_data.get("name")
             locationmodel.description = locationform.cleaned_data.get("description")
+            tempid = random.randint(1000000, 9999999)
+            while (RelevantLocationModel.objects.filter(locid=tempid).count() > 0):
+                tempid = random.randint(1000000, 9999999)
+            locationmodel.locid = tempid
             locationmodel.save()
             reportsus = ReportModel.objects.get(reportid=rid).suspects.get(susid=sid)
             reportsus.locations.add(locationmodel)
@@ -168,3 +184,19 @@ def susaddlocation(request, rid, sid):
     return render (request, "addlocation.html", {"report":ReportModel.objects.get(reportid=rid), "location_form":locationform})
 def suspectdetail(request, sid):
     return render (request, "suspectdetail.html", {"suspect": SuspectModel.objects.get(susid=sid)})
+def deletereport(request, rid):
+    report = ReportModel.objects.get(reportid=rid)
+    report.delete()
+    return HttpResponseRedirect(reverse("MetaApp:viewreports"))
+def deletesuspect(request, sid):
+    report = SuspectModel.objects.get(susid=sid)
+    report.delete()
+    return HttpResponseRedirect(reverse("MetaApp:viewreports"))
+def deleteevidence(request, eid):
+    report = EvidenceModel.objects.get(evid=eid)
+    report.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+def deletelocation(request, lid):
+    report = RelevantLocationModel.objects.get(locid=lid)
+    report.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 

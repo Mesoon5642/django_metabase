@@ -11,6 +11,14 @@
     {%block "main"%}
     <div id="main">
         <div id="reportflex">
+            <div id="addbar">
+                <h1>Modify Report</h1>
+                <ul id="modify">
+                    <a href="/MetaApp/addevidence/{{report.reportid}}"><li>Add Evidence</li></a>
+                    <a href="/MetaApp/addlocation/{{report.reportid}}"><li>Add Location</li></a>
+                    <a href="/"><li>Edit Suspect</li></a>
+                    <a href="/MetaApp/deletesuspect/{{suspect.susid}}"><li>Delete Suspect</li></a>
+            </div>
             <div id="report">
                 <h1>View Suspect</h1>
                 <h1>{{suspect.name}}</h1>

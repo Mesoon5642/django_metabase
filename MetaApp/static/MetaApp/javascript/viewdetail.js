@@ -10,6 +10,14 @@ loctflop = false;
 showsus.addEventListener("click", ShowSuspects);
 showev.addEventListener("click", ShowEvidence);
 showloc.addEventListener("click", ShowLocations);
+susdetails = document.querySelectorAll(".susmini");
+susdata = document.querySelectorAll(".susdata");
+for (let i = 0; i < susdetails.length; i++){
+    url = '/MetaApp/suspectdetail/' + susdata[i].textContent;
+    susdetails[i].addEventListener('click', function() {
+        location.href = url;
+    });
+}
 function ShowSuspects(){
     if (!sustflop){
         sustflop = true;

@@ -18,12 +18,14 @@ class InvolvedTech(models.Model):
 class RelevantLocationModel(models.Model):
     name =  models.CharField(max_length=300)
     description = models.CharField(max_length=2000)
+    locid = models.IntegerField("ID", default=0000000)
     def __str__(self):
         return self.name
 class EvidenceModel(models.Model):
     name = models.CharField(max_length=200, default="")
     datefound = models.CharField(max_length=100)
     description = models.CharField(max_length=2000, default="")
+    evid = models.IntegerField("ID", default=0000000)
     datefound.verbose_name = "Date Found"
     def __str__(self):
         return self.name

@@ -17,7 +17,9 @@
                         <ul id="modify">
                             <a href="/MetaApp/addsuspect/{{report.reportid}}"><li>Add Suspect</li></a>
                             <a href="/MetaApp/addevidence/{{report.reportid}}"><li>Add Evidence</li></a>
-                            <a href="/MetaApp/addlocation/{{report.reportid}}"><li>Add Relevant Location</li></a>
+                            <a href="/MetaApp/addlocation/{{report.reportid}}"><li>Add Location</li></a>
+                            <a href="/"><li>Edit Report</li></a>
+                            <a href="/MetaApp/deletereport/{{report.reportid}}"><li>Delete Report</li></a>
                     </div>
                     <div id="report">
                         <h1>View Report</h1>
@@ -42,35 +44,37 @@
                 </div>
                 <div style="display:none" id="suspectdetails" class="details">
                     {%for suspect in report.suspects.all%}
-                    <div class="detailmini">
-                        <a class="truelink" href="/MetaApp/suspectdetail/{{suspect.susid}}"id="suspectlink{{forloop.counter}}">
+                    <div class="detailmini susmini">
+                        <h1 style="display:none" class="susdata">{{suspect.susid}}</h1>
+                        <a class="blanklink" id="suspectlink{{forloop.counter}}">
                                 <h3>{{suspect.name}}</h3>
-                                <h3>Is Guilty?: {{suspect.guilty}}</h3>
-                                <a href="/MetaApp/addsuspect/{{report.reportid}}/addevidence/{{suspect.susid}}" class="add">Add Evidence</a>
-                                <a href="/MetaApp/addsuspect/{{report.reportid}}/addlocation/{{suspect.susid}}" class="add">Add Relevant Location</a>
+                                <h3>Age: {{suspect.age}}</h3>
+                                <h3>Description: {{suspect.description}}</h3>
                         </a>
                     </div>
                     {%endfor%}
                 </div>
                 <div style="display:none" id="evidencedetails" class="details">
                     {%for evidence in report.evidence.all%}
-                        <a class="blanklink detailmini" href=""id="evidencelink{{forloop.counter}}">
-                            <article id="evidence{{forloop.counter}}">
+                        <div class="detailmini"id="evidencelink{{forloop.counter}}">
+                            <div id="evidence{{forloop.counter}}">
                                 <h3>{{evidence.name}}</h3>
                                 <h3>Date Found: {{evidence.datefound}}</h3>
                                 <h3>Description: {{evidence.description}}</h3>
-                            </article>
-                        </a>
+                                <a href="/MetaApp/deleteevidence/{{evidence.evid}}" class="add">Delete Evidence</a>
+                            </div>
+                        </div>
                     {%endfor%}
                 </div>
                 <div style="display:none" id="locationdetails" class="details">
                     {%for location in report.relevantlocations.all%}
-                        <a class="blanklink detailmini" href=""id="locationlink{{forloop.counter}}">
-                            <article id="location{{forloop.counter}}">
+                        <div class="detailmini" id="locationlink{{forloop.counter}}">
+                            <div id="location{{forloop.counter}}">
                                 <h3>{{location.name}}</h3>
                                 <h3>Description: {{location.description}}</h3>
-                            </article>
-                        </a>
+                                <a href="/MetaApp/deletelocation/{{location.locid}}" class="add">Delete Evidence</a>
+                            </div>
+                        </div>
                     {%endfor%}
                 </div>
             </body>

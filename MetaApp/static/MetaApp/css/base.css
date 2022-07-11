@@ -19,6 +19,12 @@ header{
     background-color: #0B2545;
     transition: background-color 0.25s;
 }
+#login, #logout{
+    transition: font-size 0.75s;
+}
+#login:hover, #logout:hover{
+    font-size: 1.75rem;
+}
 #big_button:hover{
     background-color: #134074;
 }
