@@ -16,5 +16,6 @@ urlpatterns = [
     path("addsuspect/<int:rid>", views.addsuspect, name="addsuspect"),
     path("addlocation/<int:rid>", views.addlocation, name="addlocation"),
     path("addsuspect/<int:rid>/addevidence/<int:sid>", views.susaddevidence, name="addsuspect"),
-    path("addsuspect/<int:rid>/addlocation/<int:sid>", views.susaddlocation, name="addsuspect")
+    path("addsuspect/<int:rid>/addlocation/<int:sid>", views.susaddlocation, name="addsuspect"),
+    path("suspectdetail/<int:sid>", views.suspectdetail, name="suspectdetail")
 ]

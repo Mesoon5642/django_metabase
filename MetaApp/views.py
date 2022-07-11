@@ -17,7 +17,7 @@ class Tflop():
         return self.tflop
     def settflop(self, tflop):
         self.tflop = tflop
-toggle = Tflop(False)
+toggle = Tflop(True)
 def initcookies(response, toggle):
     if (toggle.gettflop()):
         response.set_cookie("LOGGED_USERNAME", "")
@@ -157,7 +157,7 @@ def susaddlocation(request, rid, sid):
     else:
         locationform = RelevantLocationForm(request.POST)
         if locationform.is_valid():
-            locationmodel = EvidenceModel.objects.create()
+            locationmodel = RelevantLocationModel.objects.create()
             locationmodel.name = locationform.cleaned_data.get("name")
             locationmodel.description = locationform.cleaned_data.get("description")
             locationmodel.save()
@@ -166,3 +166,5 @@ def susaddlocation(request, rid, sid):
             reportsus.save()
             return render (request, "thanks.html")
     return render (request, "addlocation.html", {"report":ReportModel.objects.get(reportid=rid), "location_form":locationform})
+def suspectdetail(request, sid):
+    return render (request, "suspectdetail.html", {"suspect": SuspectModel.objects.get(susid=sid)})

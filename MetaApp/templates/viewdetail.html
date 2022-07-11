@@ -42,19 +42,19 @@
                 </div>
                 <div style="display:none" id="suspectdetails" class="details">
                     {%for suspect in report.suspects.all%}
-                        <a href=""id="suspectlink{{forloop.counter}}">
-                            <article id="suspect{{forloop.counter}}">
+                    <div class="detailmini">
+                        <a class="truelink" href="/MetaApp/suspectdetail/{{suspect.susid}}"id="suspectlink{{forloop.counter}}">
                                 <h3>{{suspect.name}}</h3>
                                 <h3>Is Guilty?: {{suspect.guilty}}</h3>
                                 <a href="/MetaApp/addsuspect/{{report.reportid}}/addevidence/{{suspect.susid}}" class="add">Add Evidence</a>
                                 <a href="/MetaApp/addsuspect/{{report.reportid}}/addlocation/{{suspect.susid}}" class="add">Add Relevant Location</a>
-                            </article>
                         </a>
+                    </div>
                     {%endfor%}
                 </div>
                 <div style="display:none" id="evidencedetails" class="details">
                     {%for evidence in report.evidence.all%}
-                        <a href=""id="evidencelink{{forloop.counter}}">
+                        <a class="blanklink detailmini" href=""id="evidencelink{{forloop.counter}}">
                             <article id="evidence{{forloop.counter}}">
                                 <h3>{{evidence.name}}</h3>
                                 <h3>Date Found: {{evidence.datefound}}</h3>
@@ -65,7 +65,7 @@
                 </div>
                 <div style="display:none" id="locationdetails" class="details">
                     {%for location in report.relevantlocations.all%}
-                        <a href=""id="locationlink{{forloop.counter}}">
+                        <a class="blanklink detailmini" href=""id="locationlink{{forloop.counter}}">
                             <article id="location{{forloop.counter}}">
                                 <h3>{{location.name}}</h3>
                                 <h3>Description: {{location.description}}</h3>

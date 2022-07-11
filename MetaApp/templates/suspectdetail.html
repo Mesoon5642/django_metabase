@@ -1,0 +1,47 @@
+{%extends "index.html"%}
+{%load static%}
+
+<html>
+    {%block "styles"%}
+        <link rel="stylesheet" type="text/css" href="{% static "MetaApp/css/base.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "MetaApp/css/suspectdetail.css" %}">
+        <script src="{% static "MetaApp/javascript/suspectdetail.js" %}" defer></script>
+        <title>View Suspect Detail</title>
+    {%endblock%}
+    {%block "main"%}
+    <div id="main">
+        <div id="reportflex">
+            <div id="report">
+                <h1>View Suspect</h1>
+                <h1>{{suspect.name}}</h1>
+                <h2>Description: {{suspect.description}}</h2>
+                <h2>Age: {{suspect.age}}</h2>
+                <h2>Guilty: {{suspect.guilty}}</h2>
+                <h2>Locations: <span id="showloc">Show</span></h2>
+                <h2>Evidence: <span id="showev">Show</span></h2>
+            </div>
+        </div>
+        <div style="display:none" id="evidencedetails" class="details">
+            {%for evidence in suspect.evidence.all%}
+                <a class="blanklink detailmini" href=""id="evidencelink{{forloop.counter}}">
+                    <article id="evidence{{forloop.counter}}">
+                        <h3>{{evidence.name}}</h3>
+                        <h3>Date Found: {{evidence.datefound}}</h3>
+                        <h3>Description: {{evidence.description}}</h3>
+                    </article>
+                </a>
+            {%endfor%}
+        </div>
+        <div style="display:none" id="locationdetails" class="details">
+            {%for location in suspect.relevantlocations.all%}
+                <a class="blanklink detailmini" href=""id="locationlink{{forloop.counter}}">
+                    <article id="location{{forloop.counter}}">
+                        <h3>{{location.name}}</h3>
+                        <h3>Description: {{location.description}}</h3>
+                    </article>
+                </a>
+            {%endfor%}
+        </div>
+    </div>
+    {% endblock %}
+</html>

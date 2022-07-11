@@ -41,9 +41,9 @@ form button, a{
     background-color: #0B2545;
     color: white;
 }
-.fancybutton{
-    background-color: #0B2545;
-    color: white;
+input{
+    font-family: sans-serif;
+    color: #0B2545;
 }
 #buttons{
     display: flex;
