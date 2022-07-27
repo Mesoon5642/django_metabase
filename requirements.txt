@@ -1,5 +1,5 @@
-psycopg2==2.9.3
-asgiref==3.5.2
+apturl==0.5.2
+asgiref==3.5.0
 bcrypt==3.2.0
 blinker==1.4
 Brlapi==0.8.3
@@ -15,7 +15,6 @@ defer==1.0.6
 distlib==0.3.4
 distro==1.7.0
 distro-info===1.1build1
-dj-database-url==0.5.0
 Django==3.2.6
 django-crispy-forms==1.14.0
 django-on-heroku==1.1.2
