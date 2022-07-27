@@ -1,1 +1,1 @@
-web: gunicorn djangometabase.wsgi 
+web: gunicorn MetaApp.wsgi 
