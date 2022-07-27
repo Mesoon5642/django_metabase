@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "MetaApp"
+    "MetaApp",
+    "whitenoise.runserver_nostatic"
 ]
 crispy_template_pack = "uni_form"
 MIDDLEWARE = [
